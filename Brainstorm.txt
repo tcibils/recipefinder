@@ -1,0 +1,11 @@
+Input recipe form: https://docs.google.com/forms/d/1CWAN4qyPnIMxPflJ6NNmx5hs7BZ1KdzTyPdb3t0fO6Y/edit
+Input recipe answers: https://docs.google.com/spreadsheets/d/1oR39MoNU1HP04L8k4zmbt4BdQANouu7KlkEfubFBFMc/edit?usp=sharing
+
+Inputs recette
+Nom
+Temps de préparation (travail)
+Temps de préparation (total)
+Type de plat (Tarte, pâtes, viande en sauce...)
+Echelle de technicité
+
+Comment gérer les ingrédients ?
