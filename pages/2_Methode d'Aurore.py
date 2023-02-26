@@ -14,13 +14,14 @@ df = pd.DataFrame(ws.get_all_records())
 
 # ----------------------------------
 
-st.title("Méthode d'Aurore")
+st.title("Méthode Aurore")
 
 feculents = st.checkbox(label='Sans féculents', value=True)
 
-legumes_options = ('Carottes', 'Courgettes', 'Poireaux', 'Tomates')
+legumes_options = ('Carottes', 'Courgettes', 'Poireaux', 'Tomates', 'Aubergines', 'Poivron', 'Salade verte ', 'Concombre', 'Fenouil')
+legumes_preselected = ('Carottes', 'Courgettes', 'Poireaux', 'Tomates')
 
-legumes_choisis = st.multiselect(label='Légumes dans le frigo', options=legumes_options)
+legumes_choisis = st.multiselect(label='Légumes dans le frigo', options=legumes_options, default=legumes_preselected)
 autres_choisis = st.multiselect(label='Autres dans le frigo', options=('Lardons', 'Jambon'))
 
 legumes_not_in_fridge = list(set(legumes_options) - set(legumes_choisis))

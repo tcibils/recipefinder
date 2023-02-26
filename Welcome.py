@@ -17,5 +17,17 @@ df = pd.DataFrame(ws.get_all_records())
 st.title("Recipe Niffler")
 st.write("Le but de ce site est juste de parcourir une petite base de données de recettes, pour avoir facilement de l'inspiration au moment de se faire un repas.")
 
+st.write("Il est supposé que vous avez chez vous les essentiels suivants")
+
+ingredients_de_base = ('Gruyère', 'Lait', 'Crème', 'Oignons ou échalottes', 'Ail')
+
+st.write(ingredients_de_base)
+
+st.write('Ainsi que les epices suivantes:')
+
+epices_de_base = ('Sel', 'Poivre', 'Herbes fraiches, type basilic ou menthe', 'Muscade')
+
+st.write(epices_de_base)
+
 st.write("Voici dessous la base de données complètes")
 st.write(df)
