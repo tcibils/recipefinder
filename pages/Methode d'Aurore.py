@@ -14,8 +14,16 @@ df = pd.DataFrame(ws.get_all_records())
 
 # ----------------------------------
 
-st.title("Recipe Niffler")
-st.write("Le but de ce site est juste de parcourir une petite base de données de recettes, pour avoir facilement de l'inspiration au moment de se faire un repas.")
+st.title("Méthode d'Aurore")
 
-st.write("Voici dessous la base de données complètes")
-st.write(df)
+feculents = st.checkbox(label='Sans féculents', value=True)
+
+legumes_options = ('Carottes', 'Courgettes', 'Poireaux', 'Tomates')
+
+legumes_choisis = st.multiselect(label='Légumes dans le frigo', options=legumes_options)
+autres_choisis = st.multiselect(label='Autres dans le frigo', options=('Lardons', 'Jambon'))
+
+legumes_not_in_fridge = list(set(legumes_options) - set(legumes_choisis))
+
+# Filter out any recipe requiring any legume we don't have 
+df[df['Légumes'].str.contains('|'.join(legumes_not_in_fridge))==False]
