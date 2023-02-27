@@ -28,7 +28,7 @@ st.image(image='logo/light-logo.png')
 
 
 st.title("Recipe Niffler")
-st.write("Le but de ce site est juste de parcourir une petite base de données de recettes, pour avoir facilement de l'inspiration au moment de se faire un repas.")
+st.write("Le but de ce site est de parcourir une petite base de données de recettes, pour avoir facilement de l'inspiration au moment de se faire un repas.")
 
 st.write("Il est supposé que vous avez chez vous les essentiels suivants")
 
