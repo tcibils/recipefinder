@@ -1,4 +1,4 @@
-Horodateur,Nom de la recette,"Temps de preparation (travail, en minutes)","Temps de preparation (duree totale, en minutes)",Complexite,Type de recette,Y a-t-il des feculents? (hors legumineuses),Legumes,Congeles,Proteines,Laitages,Feculents,Autres
+Horodateur,Nom de la recette,"Temps de preparation (travail, en minutes)","Temps de preparation (duree totale, en minutes)",Complexite,Type de recette,Avec feculents,Legumes,Congeles,Proteines,Laitages,Feculents,Autres
 26/02/2023 18:17,Courgettes farcies ricotta lardon,15,45,2,,Non,Courgettes,,Lardons,Ricotta,,
 26/02/2023 18:18,Legumes farcis a  la viande,25,60,2,,Non,"Courgettes, Poivron",,Viande hachee,,,
 26/02/2023 18:19,Tomates au four pannees,5,30,1,,Non,Tomates,,,,Pain sec / panure,
