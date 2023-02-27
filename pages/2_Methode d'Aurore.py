@@ -1,16 +1,28 @@
 import streamlit as st
-import gspread as gs
+# import gspread as gs
 import pandas as pd
 
 # --------- Import gsheet with recipes
 # Use json identifier
-gc = gs.service_account(filename='recipe-finder-379006-704429557353.json')
+# gc = gs.service_account(filename='recipe-finder-379006-704429557353.json')
 # Open the spreadsheet link to the input form
-sh = gc.open_by_url('https://docs.google.com/spreadsheets/d/1oR39MoNU1HP04L8k4zmbt4BdQANouu7KlkEfubFBFMc/edit?usp=sharing')
+# sh = gc.open_by_url('https://docs.google.com/spreadsheets/d/1oR39MoNU1HP04L8k4zmbt4BdQANouu7KlkEfubFBFMc/edit?usp=sharing')
 # Open the correct worksheet
-ws = sh.worksheet('Réponses au formulaire 1')
+# ws = sh.worksheet('Réponses au formulaire 1')
 # Convert it in pandas dataframe to be able to work with it
-df = pd.DataFrame(ws.get_all_records())
+# df = pd.DataFrame(ws.get_all_records())
+
+# --------- Import csv with recipes
+df = pd.read_csv('recipe.csv', encoding='cp1252')
+
+# --------- Sidebar and global things
+
+st.set_page_config(page_title='Cibils Recipe', page_icon='logo/chosen_logo_squared.png')
+st.image(image='logo/light-logo.png')
+
+# That does not work, to check later
+# with st.sidebar:
+#    st.image(image='logo/chosen_logo_squared.png')
 
 # ----------------------------------
 
@@ -27,4 +39,4 @@ autres_choisis = st.multiselect(label='Autres dans le frigo', options=('Lardons'
 legumes_not_in_fridge = list(set(legumes_options) - set(legumes_choisis))
 
 # Filter out any recipe requiring any legume we don't have 
-df[df['Légumes'].str.contains('|'.join(legumes_not_in_fridge))==False]
+df[df['Legumes'].str.contains('|'.join(legumes_not_in_fridge))==False]

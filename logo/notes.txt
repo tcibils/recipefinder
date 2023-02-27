@@ -1,0 +1,4 @@
+purple: R131 G78 B157 - #834E9D
+
+light purple: R235, G228, B239 - #EBE4EF
+purple light logo: R123, G67, B151 - #7B4397
