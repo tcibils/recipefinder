@@ -1,14 +1,16 @@
-Horodateur,Nom de la recette,"Temps de preparation (travail, en minutes)","Temps de preparation (duree totale, en minutes)",Complexite,Type de recette,Avec feculents,Legumes,Congeles,Proteines,Laitages,Feculents,Autres
-26/02/2023 18:17,Courgettes farcies ricotta lardon,15,45,2,,Non,Courgettes,,Lardons,Ricotta,,
-26/02/2023 18:18,Legumes farcis a  la viande,25,60,2,,Non,"Courgettes, Poivron",,Viande hachee,,,
-26/02/2023 18:19,Tomates au four pannees,5,30,1,,Non,Tomates,,,,Pain sec / panure,
-26/02/2023 18:19,Demi aubergines au four,5,45,1,,Non,Aubergines,,,,,
-26/02/2023 18:20,Salade de lentilles beluga,15,45,1,,Non,,,Lardons,,Lentilles beluga,
-26/02/2023 18:21,Soupe de legumes,20,60,1,,Non,"Carottes, Poireaux",,,,Pommes de terre,
-26/02/2023 18:21,Gratin de pommes de terre,40,120,3,,Oui,,,,"Gruyere, Creme",Pommes de terre,
-26/02/2023 18:22,Salade de fenouil,15,15,1,,Non,"Concombre, Fenouil",,,,,
-26/02/2023 18:48,Salade verte,10,10,1,,Non,"Tomates, Salade Verte",,,,,
-26/02/2023 18:49,Salade pomme gruyere,15,15,1,,Non,Salade Verte,,,Gruyere,,
-26/02/2023 18:51,Taboule,25,90,2,,Oui,"Tomates, Concombre",,,,Semoule,
-26/02/2023 18:51,Pates au citron,5,25,1,,Oui,,,,,Pates,Citron
-26/02/2023 18:51,Haricots sympas,2,20,1,,Non,,Haricots,Lardons,,,
+Horodateur,Nom de la recette,"Temps de preparation (travail, en minutes)","Temps de preparation (duree totale, en minutes)",Complexite,Type de recette,Avec feculents,Legumes,Congeles,Proteines,Laitages,Feculents,Autres,Rapide descriptif,Adresse e-mail
+26/02/2023 18:17,Courgettes farcies ricotta lardon,15,45,2,,Non,Courgettes,,Lardons,Ricotta,,,,thomas.cibils@gmail.com
+26/02/2023 18:18,Legumes farcis a  la viande,25,60,2,,Non,"Courgettes, Poivron",,Viande hachee,,,,,thomas.cibils@gmail.com
+26/02/2023 18:19,Tomates au four pannees,5,30,1,,Non,Tomates,,,,Pain sec / panure,,"Couper la tomate en deux, mettre sel poivre huile d'olive et de la panure, et au four.",thomas.cibils@gmail.com
+26/02/2023 18:19,Demi aubergines au four,5,45,1,,Non,Aubergines,,,,,,,thomas.cibils@gmail.com
+26/02/2023 18:20,Salade de lentilles beluga,15,45,1,,Non,,,Lardons,,Lentilles beluga,,,thomas.cibils@gmail.com
+26/02/2023 18:21,Soupe de legumes,20,60,1,,Non,"Carottes, Poireaux",,,,Pommes de terre,,,thomas.cibils@gmail.com
+26/02/2023 18:21,Gratin de pommes de terre,40,120,3,,Oui,,,,"Gruyere, Creme",Pommes de terre,,,thomas.cibils@gmail.com
+26/02/2023 18:22,Salade de fenouil,15,15,1,,Non,"Concombre, Fenouil",,,,,,,thomas.cibils@gmail.com
+26/02/2023 18:48,Salade verte,10,10,1,,Non,"Tomates, Salade Verte",,,,,,,thomas.cibils@gmail.com
+26/02/2023 18:49,Salade pomme gruyere,15,15,1,,Non,Salade Verte,,,Gruyere,,,,thomas.cibils@gmail.com
+26/02/2023 18:51,Taboule,25,90,2,,Oui,"Tomates, Concombre",,,,Semoule,,,thomas.cibils@gmail.com
+26/02/2023 18:51,Pates au citron,5,25,1,,Oui,,,,,Pates,Citron,,thomas.cibils@gmail.com
+26/02/2023 18:51,Haricots sympas,2,20,1,,Non,,Haricots,Lardons,,,,,thomas.cibils@gmail.com
+27/02/2023 15:20,Happiness,1,1,1,,Oui,"Tomates, Concombre",,Lardons,Creme,Pates,,Bacon makes everything better,aurore.cibils@gmail.com
+27/02/2023 15:07,Fajitas,25,25,2,,Oui,Poivron,,Poulet,Yaourt nature,Tortillas,,"Cuire poivron + poulet + oignons a la poele, ajouter les epices a fajitas, mettre dans la tortilla avec le yaourt",thomas.cibils@gmail.com

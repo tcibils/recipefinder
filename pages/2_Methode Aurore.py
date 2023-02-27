@@ -1,5 +1,5 @@
 import streamlit as st
-import gspread as gs
+# import gspread as gs
 import pandas as pd
 
 # --------- Import gsheet with recipes
@@ -49,7 +49,7 @@ with col2:
     congeles_not_available = list(set(congeles_options) - set(congeles_choisis))
 
 with col3:
-    proteines_options = ('Poulet', 'Viande hachee', 'Oeufs', 'Lardons', 'Jambon')
+    proteines_options = ('Poulet', 'Viande hachee', 'Oeufs', 'Lardons', 'Jambon', 'Bacon')
     proteines_preselected = ('Oeufs')
     proteines_choisis = st.multiselect(label='Protéines au frigo', options=proteines_options, default=proteines_preselected)    
     proteines_not_available = list(set(proteines_options) - set(proteines_choisis))
@@ -72,8 +72,37 @@ with col3:
     autres_choisis = st.multiselect(label='Autres', options=autres_options, default=autres_preselected)    
     autres_not_available = list(set(autres_options) - set(autres_choisis))
 
+st.subheader("Résultats")
+
 # Displayed filter database
 # Uses the checkbox to filter out ingredients with feculents if needed, but still show those without feculents if checkbox is unticked
 # For each ingredient type, exclude recipe needing any ingredient we would not have
 # But for each ingredient type, keep any recipe not needing any ingredient from the ingredient type 
-df[((df['Avec feculents'].str.contains('Non') == feculents) | (df['Avec feculents'].str.contains('Non') == True)) & ((df['Legumes'].str.contains('|'.join(legumes_not_available))==False) | (df['Legumes'].notnull() == False)) & ((df['Proteines'].str.contains('|'.join(proteines_not_available))==False) | (df['Proteines'].notnull() == False)) & ((df['Laitages'].str.contains('|'.join(laitages_not_available))==False) | (df['Laitages'].notnull() == False)) & ((df['Congeles'].str.contains('|'.join(congeles_not_available))==False) | (df['Congeles'].notnull() == False)) & ((df['Laitages'].str.contains('|'.join(laitages_not_available))==False) | (df['Laitages'].notnull() == False)) & ((df['Feculents'].str.contains('|'.join(feculents_not_available))==False) | (df['Feculents'].notnull() == False)) & ((df['Autres'].str.contains('|'.join(autres_not_available))==False) | (df['Autres'].notnull() == False))]
+fdf = df[((df['Avec feculents'].str.contains('Non') == feculents) | (df['Avec feculents'].str.contains('Non') == True)) & ((df['Legumes'].str.contains('|'.join(legumes_not_available))==False) | (df['Legumes'].notnull() == False)) & ((df['Proteines'].str.contains('|'.join(proteines_not_available))==False) | (df['Proteines'].notnull() == False)) & ((df['Laitages'].str.contains('|'.join(laitages_not_available))==False) | (df['Laitages'].notnull() == False)) & ((df['Congeles'].str.contains('|'.join(congeles_not_available))==False) | (df['Congeles'].notnull() == False)) & ((df['Laitages'].str.contains('|'.join(laitages_not_available))==False) | (df['Laitages'].notnull() == False)) & ((df['Feculents'].str.contains('|'.join(feculents_not_available))==False) | (df['Feculents'].notnull() == False)) & ((df['Autres'].str.contains('|'.join(autres_not_available))==False) | (df['Autres'].notnull() == False))]
+
+
+# st.write(fdf)
+
+col4, col5, col6 = st.columns(3)
+counter = 1
+
+for index in fdf['Nom de la recette']:
+    if counter % 3 == 1:
+        with col4:
+            with st.expander(label=index, expanded=False):
+                st.write(fdf.loc[fdf['Nom de la recette'] == index].squeeze()['Rapide descriptif'])
+                st.write("Temps de préparation total: " + str(fdf.loc[fdf['Nom de la recette'] == index].squeeze()['Temps de preparation (duree totale, en minutes)']) + " minutes")
+
+    if counter % 3 == 2:
+        with col5:
+            with st.expander(label=index, expanded=False):
+                st.write(fdf.loc[fdf['Nom de la recette'] == index].squeeze()['Rapide descriptif'])
+                st.write("Temps de préparation total: " + str(fdf.loc[fdf['Nom de la recette'] == index].squeeze()['Temps de preparation (duree totale, en minutes)']) + " minutes")
+
+    if counter % 3 == 0:
+        with col6:
+            with st.expander(label=index, expanded=False):
+                st.write(fdf.loc[fdf['Nom de la recette'] == index].squeeze()['Rapide descriptif'])
+                st.write("Temps de préparation total: " + str(fdf.loc[fdf['Nom de la recette'] == index].squeeze()['Temps de preparation (duree totale, en minutes)']) + " minutes")
+
+    counter += 1
