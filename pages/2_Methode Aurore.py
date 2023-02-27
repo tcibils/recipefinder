@@ -1,5 +1,5 @@
 import streamlit as st
-# import gspread as gs
+import gspread as gs
 import pandas as pd
 
 # --------- Import gsheet with recipes
