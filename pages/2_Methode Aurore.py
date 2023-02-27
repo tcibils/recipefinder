@@ -51,8 +51,8 @@ with col3:
     proteines_not_available = list(set(proteines_options) - set(proteines_choisis))
 
 with col1:
-    laitages_options = ('Ricotta', 'Gruyère', 'Creme')
-    laitages_preselected = ('Gruyère')
+    laitages_options = ('Ricotta', 'Gruyere', 'Creme')
+    laitages_preselected = ('Gruyere')
     laitages_choisis = st.multiselect(label='Laitages au frigo', options=laitages_options, default=laitages_preselected)    
     laitages_not_available = list(set(laitages_options) - set(laitages_choisis))
 
@@ -68,9 +68,8 @@ with col3:
     autres_choisis = st.multiselect(label='Autres', options=autres_options, default=autres_preselected)    
     autres_not_available = list(set(autres_options) - set(autres_choisis))
 
-# Filter out any recipe requiring any legume we don't have 
-df[(df['Legumes'].str.contains('|'.join(legumes_not_available))==False) & (df['Proteines'].str.contains('|'.join(proteines_not_available))==False) & (df['Laitages'].str.contains('|'.join(laitages_not_available))==False)]
-# Issue todo : with the line above, courgette + ricotta + lardon correctly appears if ingredients are selected, but not courgettes + lardon, eventhough the laitage column is empty. It seems to discard it.
+# Displayed filter database
+# For each ingredient type, exclude recipe needing any ingredient we would not have
+# But for each ingredient type, keep any recipe not needing any ingredient from the ingredient type 
+df[((df['Legumes'].str.contains('|'.join(legumes_not_available))==False) | (df['Legumes'].notnull() == False)) & ((df['Proteines'].str.contains('|'.join(proteines_not_available))==False) | (df['Proteines'].notnull() == False)) & ((df['Laitages'].str.contains('|'.join(laitages_not_available))==False) | (df['Laitages'].notnull() == False)) & ((df['Congeles'].str.contains('|'.join(congeles_not_available))==False) | (df['Congeles'].notnull() == False)) & ((df['Laitages'].str.contains('|'.join(laitages_not_available))==False) | (df['Laitages'].notnull() == False)) & ((df['Feculents'].str.contains('|'.join(feculents_not_available))==False) | (df['Feculents'].notnull() == False)) & ((df['Autres'].str.contains('|'.join(autres_not_available))==False) | (df['Autres'].notnull() == False))]
 
-df[(df['Congeles'].str.contains('|'.join(congeles_not_available))==False)]
-# & (df['Laitages'].str.contains('|'.join(laitages_not_available))==False) & (df['Feculents'].str.contains('|'.join(feculents_not_available))==False) & (df['Autres'].str.contains('|'.join(autres_not_available))==False)]
