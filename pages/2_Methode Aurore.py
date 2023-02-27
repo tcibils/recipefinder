@@ -33,36 +33,44 @@ feculents = st.checkbox(label='Sans féculents', value=True)
 col1, col2, col3 = st.columns(3)
 
 with col1:
-    legumes_options = ('Carottes', 'Courgettes', 'Poireaux', 'Tomates', 'Aubergines', 'Poivron', 'Salade verte ', 'Concombre', 'Fenouil')
+    legumes_options = ('Carottes', 'Courgettes', 'Poireaux', 'Tomates', 'Aubergines', 'Poivron', 'Salade Verte', 'Concombre', 'Fenouil')
     legumes_preselected = ('Carottes', 'Courgettes', 'Poireaux', 'Tomates')
     legumes_choisis = st.multiselect(label='Légumes dans le frigo', options=legumes_options, default=legumes_preselected)
+    legumes_not_available = list(set(legumes_options) - set(legumes_choisis))
 
 with col2:
     congeles_options = ('Haricots', 'Petits pois', 'Epinards', 'Brocolis')
     congeles_preselected = ('Haricots', 'Petits pois', 'Epinards')
     congeles_choisis = st.multiselect(label='Légumes dans le congélateur', options=congeles_options, default=congeles_preselected)    
+    congeles_not_available = list(set(congeles_options) - set(congeles_choisis))
 
 with col3:
     proteines_options = ('Poulet', 'Viande hachee', 'Oeufs', 'Lardons', 'Jambon')
     proteines_preselected = ('Oeufs')
     proteines_choisis = st.multiselect(label='Protéines au frigo', options=proteines_options, default=proteines_preselected)    
+    proteines_not_available = list(set(proteines_options) - set(proteines_choisis))
 
 with col1:
     laitages_options = ('Ricotta', 'Gruyère', 'Creme')
     laitages_preselected = ('Gruyère')
     laitages_choisis = st.multiselect(label='Laitages au frigo', options=laitages_options, default=laitages_preselected)    
+    laitages_not_available = list(set(laitages_options) - set(laitages_choisis))
 
 with col2:
     feculents_options = ('Pates', 'Riz', 'Quinoa', 'Pommes de terre', 'Pain sec ou panure', 'Puree', 'Semoule', 'Lentilles beluga', 'Lentilles corail', 'Pois chiches')
     feculents_preselected = ('Pates', 'Riz', 'Quinoa', 'Pommes de terre', 'Pain sec ou panure', 'Puree', 'Semoule', 'Lentilles beluga', 'Lentilles corail')
     feculents_choisis = st.multiselect(label='Légumineuses et féculents', options=feculents_options, default=feculents_preselected)    
+    feculents_not_available = list(set(feculents_options) - set(feculents_choisis))
 
 with col3:
     autres_options = ('Citron', 'Basilic', 'Menthe')
     autres_preselected = ('Basilic', 'Menthe')
     autres_choisis = st.multiselect(label='Autres', options=autres_options, default=autres_preselected)    
-
-legumes_not_in_fridge = list(set(legumes_options) - set(legumes_choisis))
+    autres_not_available = list(set(autres_options) - set(autres_choisis))
 
 # Filter out any recipe requiring any legume we don't have 
-df[df['Legumes'].str.contains('|'.join(legumes_not_in_fridge))==False]
+df[(df['Legumes'].str.contains('|'.join(legumes_not_available))==False) & (df['Proteines'].str.contains('|'.join(proteines_not_available))==False) & (df['Laitages'].str.contains('|'.join(laitages_not_available))==False)]
+# Issue todo : with the line above, courgette + ricotta + lardon correctly appears if ingredients are selected, but not courgettes + lardon, eventhough the laitage column is empty. It seems to discard it.
+
+df[(df['Congeles'].str.contains('|'.join(congeles_not_available))==False)]
+# & (df['Laitages'].str.contains('|'.join(laitages_not_available))==False) & (df['Feculents'].str.contains('|'.join(feculents_not_available))==False) & (df['Autres'].str.contains('|'.join(autres_not_available))==False)]
