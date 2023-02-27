@@ -76,7 +76,7 @@ with col3:
 
 st.subheader("Résultats")
 
-st.write(df)
+# st.write(df)
 
 # Displayed filter database
 # Uses the checkbox to filter out ingredients with feculents if needed, but still show those without feculents if checkbox is unticked
@@ -96,17 +96,20 @@ for index in fdf['Nom de la recette']:
             with st.expander(label=index, expanded=False):
                 st.write(fdf.loc[fdf['Nom de la recette'] == index].squeeze()['Rapide descriptif'])
                 st.write("Temps de préparation total: " + str(fdf.loc[fdf['Nom de la recette'] == index].squeeze()['Temps de preparation (duree totale, en minutes)']) + " minutes")
+                st.write("On remercie chaleureusement " + str(fdf.loc[fdf['Nom de la recette'] == index].squeeze()['Adresse e-mail']) + " pour la recette !")
 
     if counter % 3 == 2:
         with col5:
             with st.expander(label=index, expanded=False):
                 st.write(fdf.loc[fdf['Nom de la recette'] == index].squeeze()['Rapide descriptif'])
                 st.write("Temps de préparation total: " + str(fdf.loc[fdf['Nom de la recette'] == index].squeeze()['Temps de preparation (duree totale, en minutes)']) + " minutes")
+                st.write("On remercie chaleureusement " + str(fdf.loc[fdf['Nom de la recette'] == index].squeeze()['Adresse e-mail']) + " pour la recette !")
 
     if counter % 3 == 0:
         with col6:
             with st.expander(label=index, expanded=False):
                 st.write(fdf.loc[fdf['Nom de la recette'] == index].squeeze()['Rapide descriptif'])
                 st.write("Temps de préparation total: " + str(fdf.loc[fdf['Nom de la recette'] == index].squeeze()['Temps de preparation (duree totale, en minutes)']) + " minutes")
+                st.write("On remercie chaleureusement " + str(fdf.loc[fdf['Nom de la recette'] == index].squeeze()['Adresse e-mail']) + " pour la recette !")
 
     counter += 1
