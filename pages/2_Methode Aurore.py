@@ -39,7 +39,7 @@ feculents = st.checkbox(label='Sans féculents', value=True, help="Par défaut, 
 col1, col2, col3 = st.columns(3)
 
 with col1:
-    legumes_options = ('Carottes', 'Courgettes', 'Poireaux', 'Tomates', 'Aubergines', 'Poivron', 'Salade Verte', 'Concombre', 'Fenouil')
+    legumes_options = ('Carottes', 'Courgettes', 'Poireaux', 'Tomates', 'Aubergines', 'Poivron', 'Salade verte', 'Concombre', 'Fenouil')
     legumes_preselected = ('Carottes', 'Courgettes', 'Poireaux', 'Tomates')
     legumes_choisis = st.multiselect(label='Légumes dans le frigo', options=legumes_options, default=legumes_preselected)
     legumes_not_available = list(set(legumes_options) - set(legumes_choisis))
