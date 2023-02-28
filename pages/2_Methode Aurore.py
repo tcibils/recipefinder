@@ -51,7 +51,7 @@ with col2:
     congeles_not_available = list(set(congeles_options) - set(congeles_choisis))
 
 with col3:
-    proteines_options = ('Poulet', 'Viande hachee', 'Oeufs', 'Lardons', 'Jambon', 'Bacon')
+    proteines_options = ('Poulet', 'Viande hachee', 'Oeufs', 'Lardons', 'Jambon', 'Paneer', 'Bacon')
     proteines_preselected = ('Oeufs')
     proteines_choisis = st.multiselect(label='Protéines au frigo', options=proteines_options, default=proteines_preselected)    
     proteines_not_available = list(set(proteines_options) - set(proteines_choisis))
