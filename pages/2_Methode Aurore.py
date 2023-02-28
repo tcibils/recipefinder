@@ -5,7 +5,6 @@ import pandas as pd
 # --------- Import gsheet with recipes
 # Use json identifier
 gc = gs.service_account(filename='recipe-finder-379006-704429557353.json')
-
 # Open the spreadsheet link to the input form
 sh = gc.open_by_url('https://docs.google.com/spreadsheets/d/1oR39MoNU1HP04L8k4zmbt4BdQANouu7KlkEfubFBFMc/edit?usp=sharing')
 # Open the correct worksheet
@@ -31,7 +30,8 @@ st.image(image='logo/light-logo.png', width=600)
 st.title("Méthode Aurore")
 
 st.subheader("Welcome")
-st.write("On permet ici de trouver des recettes sans féculents, et en se basant sur les ingrédients qu'on a au frigo. On suppose qu'on a sel, poivre, oignons ou échalottes, ail, et autres épices non périssables comme la muscade, le curry ou ce genre de choses, pour égayer un peu tout ça.")
+st.write("On permet ici de trouver des recettes sans féculents, et en se basant sur les ingrédients qu'on a au frigo. On suppose qu'on a sel, poivre, oignons ou échalottes, ail, quelques autres épices non périssables comme la muscade, le curry ou le paprika, et des herbes sèches comme les feuilles de laurier ou le thym, pour égayer un peu tout ça.")
+st.write("On suppose aussi qu'on a toujours des non-périssables en stock comme de la sauce tomate ou du pesto.")
 
 st.subheader("Niffling")
 feculents = st.checkbox(label='Sans féculents', value=True, help="Par défaut, ne montre par les recettes incluant des féculents.")
