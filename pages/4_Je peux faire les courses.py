@@ -26,5 +26,7 @@ st.image(image='logo/light-logo.png', width=600)
 
 # ----------------------------------
 
-st.title("Filtrage par groupe de recettes")
+st.title("Je vais faire les courses, on mange quoi ce soir ?")
+st.subheader("Intro")
+st.write("L'idée ici est qu'on a le temps d'aller faire les courses, ou qu'on y va, et donc qu'on peut avoir les ingrédients qu'on veut pour cuisiner quelque chose.")
 
