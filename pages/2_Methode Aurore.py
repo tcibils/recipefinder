@@ -31,7 +31,7 @@ st.title("Méthode Aurore")
 
 st.subheader("Welcome")
 st.write("On permet ici de trouver des recettes sans féculents, et en se basant sur les ingrédients qu'on a au frigo. On suppose qu'on a sel, poivre, oignons ou échalottes, ail, quelques autres épices non périssables comme la muscade, le curry ou le paprika, et des herbes sèches comme les feuilles de laurier ou le thym, pour égayer un peu tout ça.")
-st.write("On suppose aussi qu'on a toujours des non-périssables en stock comme de la sauce tomate ou du pesto.")
+st.write("On suppose aussi qu'on a toujours des non-périssables en stock comme de la sauce tomate, du pesto ou de la pâte de curry.")
 
 st.subheader("Niffling")
 feculents = st.checkbox(label='Sans féculents', value=True, help="Par défaut, ne montre par les recettes incluant des féculents.")
@@ -39,7 +39,7 @@ feculents = st.checkbox(label='Sans féculents', value=True, help="Par défaut, 
 col1, col2, col3 = st.columns(3)
 
 with col1:
-    legumes_options = ('Carottes', 'Courgettes', 'Poireaux', 'Tomates', 'Aubergines', 'Poivron', 'Salade verte', 'Concombre', 'Fenouil')
+    legumes_options = ('Carottes', 'Courgettes', 'Poireaux', 'Tomates', 'Aubergines', 'Poivron', 'Salade verte', 'Concombre', 'Fenouil', 'Chou fleur')
     legumes_preselected = ('Carottes', 'Courgettes', 'Poireaux', 'Tomates')
     legumes_choisis = st.multiselect(label='Légumes dans le frigo', options=legumes_options, default=legumes_preselected)
     legumes_not_available = list(set(legumes_options) - set(legumes_choisis))
