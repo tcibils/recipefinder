@@ -56,24 +56,24 @@ solution_one['Nom de la recette'].squeeze()
 tab1, tab2, tab3 = st.tabs([solution_one['Nom de la recette'].squeeze(), solution_two['Nom de la recette'].squeeze(), solution_three['Nom de la recette'].squeeze()])
 
 with tab1:
-    if len(str(fdf.loc[fdf['Nom de la recette'] == index].squeeze()['URL d\'une photo'])) > 0:
-        st.image(image=str(fdf.loc[fdf['Nom de la recette'] == index].squeeze()['URL d\'une photo']))
+    if len(str(solution_one['URL d\'une photo'])) > 0:
+        st.image(image=str(solution_one['URL d\'une photo']))
 
     st.write(solution_one['Rapide descriptif'].squeeze())
     st.write("Temps de préparation total: " + str(solution_one['Temps de preparation (duree totale, en minutes)'].squeeze()) + " minutes")
     st.write("On remercie chaleureusement " + str(solution_one['Adresse e-mail'].squeeze()) + " pour la recette !")
 
 with tab2:
-    if len(str(fdf.loc[fdf['Nom de la recette'] == index].squeeze()['URL d\'une photo'])) > 0:
-        st.image(image=str(fdf.loc[fdf['Nom de la recette'] == index].squeeze()['URL d\'une photo']))
+    if len(str(solution_two['URL d\'une photo'])) > 0:
+        st.image(image=str(solution_two['URL d\'une photo']))
 
     st.write(solution_two['Rapide descriptif'].squeeze())
     st.write("Temps de préparation total: " + str(solution_two['Temps de preparation (duree totale, en minutes)'].squeeze()) + " minutes")
     st.write("On remercie chaleureusement " + str(solution_two['Adresse e-mail'].squeeze()) + " pour la recette !")
 
 with tab3:
-    if len(str(fdf.loc[fdf['Nom de la recette'] == index].squeeze()['URL d\'une photo'])) > 0:
-        st.image(image=str(fdf.loc[fdf['Nom de la recette'] == index].squeeze()['URL d\'une photo']))
+    if len(str(solution_three['URL d\'une photo'])) > 0:
+        st.image(image=str(solution_three['URL d\'une photo']))
 
     st.write(solution_three['Rapide descriptif'].squeeze())
     st.write("Temps de préparation total: " + str(solution_three['Temps de preparation (duree totale, en minutes)'].squeeze()) + " minutes")
