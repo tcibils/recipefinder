@@ -111,6 +111,7 @@ for index in fdf['Nom de la recette']:
         with col6:
             with st.expander(label=index, expanded=False):                
                 st.write(fdf.loc[fdf['Nom de la recette'] == index].squeeze()['URL d\'une photo'])
+                st.image('https://images.immediate.co.uk/production/volatile/sites/2/2022/03/CreamedSpinachOmlette_010-1d5e6a5.jpg')
                 st.write(fdf.loc[fdf['Nom de la recette'] == index].squeeze()['Rapide descriptif'])
                 st.write("Temps de préparation total: " + str(fdf.loc[fdf['Nom de la recette'] == index].squeeze()['Temps de preparation (duree totale, en minutes)']) + " minutes")
                 st.write("On remercie chaleureusement " + str(fdf.loc[fdf['Nom de la recette'] == index].squeeze()['Adresse e-mail']) + " pour la recette !")
