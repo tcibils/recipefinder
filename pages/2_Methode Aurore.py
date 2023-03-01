@@ -57,7 +57,7 @@ with col3:
     proteines_not_available = list(set(proteines_options) - set(proteines_choisis))
 
 with col1:
-    laitages_options = ('Ricotta', 'Gruyere', 'Creme', 'Lait', 'Yaourt nature', 'Mozarella')
+    laitages_options = ('Ricotta', 'Gruyere', 'Creme', 'Lait', 'Yaourt nature', 'Mozarella', 'Parmesan')
     laitages_preselected = ('Gruyere', 'Lait')
     laitages_choisis = st.multiselect(label='Laitages au frigo', options=laitages_options, default=laitages_preselected)    
     laitages_not_available = list(set(laitages_options) - set(laitages_choisis))
