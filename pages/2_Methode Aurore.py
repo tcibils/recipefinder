@@ -94,7 +94,7 @@ for index in fdf['Nom de la recette']:
     if counter % 3 == 1:
         with col4:
             with st.expander(label=index, expanded=False):
-                if len(str(fdf.loc[fdf['Nom de la recette'] == index].squeeze()['URL d\'une photo'])) > 0
+                if len(str(fdf.loc[fdf['Nom de la recette'] == index].squeeze()['URL d\'une photo'])) > 0:
                     st.image(image=str(fdf.loc[fdf['Nom de la recette'] == index].squeeze()['URL d\'une photo']))
                 st.write(fdf.loc[fdf['Nom de la recette'] == index].squeeze()['Rapide descriptif'])
                 st.write("Temps de préparation total: " + str(fdf.loc[fdf['Nom de la recette'] == index].squeeze()['Temps de preparation (duree totale, en minutes)']) + " minutes")
@@ -103,7 +103,7 @@ for index in fdf['Nom de la recette']:
     if counter % 3 == 2:
         with col5:
             with st.expander(label=index, expanded=False):
-                if len(str(fdf.loc[fdf['Nom de la recette'] == index].squeeze()['URL d\'une photo'])) > 0
+                if len(str(fdf.loc[fdf['Nom de la recette'] == index].squeeze()['URL d\'une photo'])) > 0:
                     st.image(image=str(fdf.loc[fdf['Nom de la recette'] == index].squeeze()['URL d\'une photo']))
                 st.write(fdf.loc[fdf['Nom de la recette'] == index].squeeze()['Rapide descriptif'])
                 st.write("Temps de préparation total: " + str(fdf.loc[fdf['Nom de la recette'] == index].squeeze()['Temps de preparation (duree totale, en minutes)']) + " minutes")
@@ -112,7 +112,7 @@ for index in fdf['Nom de la recette']:
     if counter % 3 == 0:
         with col6:
             with st.expander(label=index, expanded=False):                
-                if len(str(fdf.loc[fdf['Nom de la recette'] == index].squeeze()['URL d\'une photo'])) > 0
+                if len(str(fdf.loc[fdf['Nom de la recette'] == index].squeeze()['URL d\'une photo'])) > 0:
                     st.image(image=str(fdf.loc[fdf['Nom de la recette'] == index].squeeze()['URL d\'une photo']))
                 st.write(fdf.loc[fdf['Nom de la recette'] == index].squeeze()['Rapide descriptif'])
                 st.write("Temps de préparation total: " + str(fdf.loc[fdf['Nom de la recette'] == index].squeeze()['Temps de preparation (duree totale, en minutes)']) + " minutes")
