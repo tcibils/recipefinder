@@ -58,7 +58,7 @@ with col3:
 
 with col1:
     laitages_options = ('Ricotta', 'Gruyere', 'Creme', 'Lait', 'Yaourt nature', 'Mozarella', 'Parmesan')
-    laitages_preselected = ('Gruyere', 'Lait')
+    laitages_preselected = ('Gruyere', 'Lait', 'Parmesan')
     laitages_choisis = st.multiselect(label='Laitages au frigo', options=laitages_options, default=laitages_preselected)    
     laitages_not_available = list(set(laitages_options) - set(laitages_choisis))
 
@@ -94,6 +94,7 @@ for index in fdf['Nom de la recette']:
     if counter % 3 == 1:
         with col4:
             with st.expander(label=index, expanded=False):
+                st.image(fdf.loc[fdf['Nom de la recette'] == index].squeeze()['URL d\'une photo'])
                 st.write(fdf.loc[fdf['Nom de la recette'] == index].squeeze()['Rapide descriptif'])
                 st.write("Temps de préparation total: " + str(fdf.loc[fdf['Nom de la recette'] == index].squeeze()['Temps de preparation (duree totale, en minutes)']) + " minutes")
                 st.write("On remercie chaleureusement " + str(fdf.loc[fdf['Nom de la recette'] == index].squeeze()['Adresse e-mail']) + " pour la recette !")
@@ -101,13 +102,15 @@ for index in fdf['Nom de la recette']:
     if counter % 3 == 2:
         with col5:
             with st.expander(label=index, expanded=False):
+                st.image(fdf.loc[fdf['Nom de la recette'] == index].squeeze()['URL d\'une photo'])
                 st.write(fdf.loc[fdf['Nom de la recette'] == index].squeeze()['Rapide descriptif'])
                 st.write("Temps de préparation total: " + str(fdf.loc[fdf['Nom de la recette'] == index].squeeze()['Temps de preparation (duree totale, en minutes)']) + " minutes")
                 st.write("On remercie chaleureusement " + str(fdf.loc[fdf['Nom de la recette'] == index].squeeze()['Adresse e-mail']) + " pour la recette !")
 
     if counter % 3 == 0:
         with col6:
-            with st.expander(label=index, expanded=False):
+            with st.expander(label=index, expanded=False):                
+                st.image(fdf.loc[fdf['Nom de la recette'] == index].squeeze()['URL d\'une photo'])
                 st.write(fdf.loc[fdf['Nom de la recette'] == index].squeeze()['Rapide descriptif'])
                 st.write("Temps de préparation total: " + str(fdf.loc[fdf['Nom de la recette'] == index].squeeze()['Temps de preparation (duree totale, en minutes)']) + " minutes")
                 st.write("On remercie chaleureusement " + str(fdf.loc[fdf['Nom de la recette'] == index].squeeze()['Adresse e-mail']) + " pour la recette !")
