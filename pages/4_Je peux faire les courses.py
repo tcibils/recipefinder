@@ -20,7 +20,7 @@ df = pd.DataFrame(ws.get_all_records())
 # --------- Sidebar and global things
 
 st.set_page_config(page_title='Cibils Recipe', page_icon='logo/chosen_logo_squared.png', layout='wide')
-st.image(image='logo/light-logo.png', width=600)
+st.image(image='logo/chosen_logo.png', width=600)
 
 # That does not work, to check later
 # with st.sidebar:
