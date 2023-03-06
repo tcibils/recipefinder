@@ -69,7 +69,7 @@ with col2:
     feculents_not_available = list(set(feculents_options) - set(feculents_choisis))
 
 with col3:
-    autres_options = ('Citron', 'Basilic', 'Menthe')
+    autres_options = ('Citron', 'Basilic', 'Menthe', 'Gingembre')
     autres_preselected = ('Basilic', 'Menthe')
     autres_choisis = st.multiselect(label='Autres', options=autres_options, default=autres_preselected)    
     autres_not_available = list(set(autres_options) - set(autres_choisis))
