@@ -63,7 +63,7 @@ with col1:
     laitages_not_available = list(set(laitages_options) - set(laitages_choisis))
 
 with col2:
-    feculents_options = ('Pates', 'Riz', 'Quinoa', 'Pommes de terre', 'Pain sec ou panure', 'Puree', 'Semoule', 'Lentilles brunes', 'Lentilles beluga', 'Lentilles corail', 'Pois chiches', 'Pois casses')
+    feculents_options = ('Pates', 'Riz', 'Quinoa', 'Pommes de terre', 'Pain sec ou panure', 'Puree', 'Semoule', 'Lentilles brunes', 'Lentilles beluga', 'Lentilles corail', 'Pois chiches', 'Pois casses', 'Boulgour')
     feculents_preselected = ('Pates', 'Riz', 'Quinoa', 'Pommes de terre', 'Puree', 'Lentilles beluga', 'Pois casses')
     feculents_choisis = st.multiselect(label='Légumineuses et féculents', options=feculents_options, default=feculents_preselected)    
     feculents_not_available = list(set(feculents_options) - set(feculents_choisis))
