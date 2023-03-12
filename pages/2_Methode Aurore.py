@@ -31,7 +31,7 @@ st.title("Méthode Aurore")
 
 st.subheader("Welcome")
 st.write("On permet ici de trouver des recettes sans féculents, et en se basant sur les ingrédients qu'on a au frigo. On suppose qu'on a sel, poivre, oignons ou échalottes, ail, quelques autres épices non périssables comme la muscade, le curry ou le paprika, et des herbes sèches comme les feuilles de laurier ou le thym, pour égayer un peu tout ça.")
-st.write("On suppose aussi qu'on a toujours des non-périssables en stock comme de la sauce tomate, du pesto ou de la pâte de curry.")
+st.write("On suppose aussi qu'on a toujours des non-périssables en stock comme de la sauce tomate, du pesto ou de la pâte de curry. Les pois chiches se trouvent en conserve karma et sont bons comme ça.")
 
 st.subheader("Niffling")
 feculents = st.checkbox(label='Sans féculents', value=True, help="Par défaut, ne montre par les recettes incluant des féculents.")
