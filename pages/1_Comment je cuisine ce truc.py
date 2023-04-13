@@ -40,7 +40,7 @@ feculents = st.checkbox(label='Sans féculents', value=True, help="Par défaut, 
 
 all_aliments = ('Carottes', 'Courgettes', 'Poireaux', 'Tomates', 'Aubergines', 'Poivron', 'Salade verte', 'Concombre', 'Fenouil', 'Chou fleur', 'Haricots', 'Petits pois', 'Epinards', 'Brocolis', 'Poulet', 'Viande hachee', 'Oeufs', 'Lardons', 'Jambon', 'Paneer', 'Bacon', 'Ricotta', 'Gruyere', 'Creme', 'Lait', 'Yaourt nature', 'Mozarella', 'Parmesan', 'Pates', 'Riz', 'Quinoa', 'Pommes de terre', 'Patates douces', 'Pain sec ou panure', 'Puree', 'Semoule', 'Lentilles brunes', 'Lentilles beluga', 'Lentilles corail', 'Pois chiches', 'Pois casses', 'Boulgour', 'Citron', 'Basilic', 'Menthe', 'Gingembre')
 
-aliment_choice = st.selectbox(label='Aliment', options=all_aliments, help="Aliment à cuisiner")
+aliment_choice = st.selectbox(label='Aliment à cuisiner', options=all_aliments, help="Le truc que tu sais pas cuisiner et pour lequel tu te cherches une recette")
 
 st.subheader("Résultats")
 
