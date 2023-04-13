@@ -33,8 +33,14 @@ st.subheader("Welcome")
 st.write("Ici, le but est de prendre un aliment, et de trouver des idées de comment ça pourrait être cuisiné. On permet ici de filtrer pour trouver des recettes sans féculents. On suppose qu'on a sel, poivre, oignons ou échalottes, ail, quelques autres épices non périssables comme la muscade, le curry ou le paprika, et des herbes sèches comme les feuilles de laurier ou le thym, pour égayer un peu tout ça.")
 st.write("On suppose aussi qu'on a toujours des non-périssables en stock comme de la sauce tomate, du pesto ou de la pâte de curry. Les pois chiches se trouvent en conserve karma et sont bons comme ça.")
 
+
+
 st.subheader("Niffling")
 feculents = st.checkbox(label='Sans féculents', value=True, help="Par défaut, ne montre par les recettes incluant des féculents.")
+
+all_aliments = ('Carottes', 'Courgettes', 'Poireaux', 'Tomates', 'Aubergines', 'Poivron', 'Salade verte', 'Concombre', 'Fenouil', 'Chou fleur', 'Haricots', 'Petits pois', 'Epinards', 'Brocolis', 'Poulet', 'Viande hachee', 'Oeufs', 'Lardons', 'Jambon', 'Paneer', 'Bacon', 'Ricotta', 'Gruyere', 'Creme', 'Lait', 'Yaourt nature', 'Mozarella', 'Parmesan', 'Pates', 'Riz', 'Quinoa', 'Pommes de terre', 'Patates douces', 'Pain sec ou panure', 'Puree', 'Semoule', 'Lentilles brunes', 'Lentilles beluga', 'Lentilles corail', 'Pois chiches', 'Pois casses', 'Boulgour', 'Citron', 'Basilic', 'Menthe', 'Gingembre')
+
+aliment_choice = st.selectbox(label='Aliment', options=all_aliments, help="Aliment à cuisiner")
 
 col1, col2, col3 = st.columns(3)
 
@@ -82,7 +88,7 @@ st.subheader("Résultats")
 # Uses the checkbox to filter out ingredients with feculents if needed, but still show those without feculents if checkbox is unticked
 # For each ingredient type, exclude recipe needing any ingredient we would not have
 # But for each ingredient type, keep any recipe not needing any ingredient from the ingredient type 
-fdf = df[((df['Avec feculents '].str.contains('Non') == feculents) | (df['Avec feculents '].str.contains('Non') == True)) & ((df['Legumes'].str.contains('|'.join(legumes_not_available))==False) | (df['Legumes'].notnull() == False)) & ((df['Proteines'].str.contains('|'.join(proteines_not_available))==False) | (df['Proteines'].notnull() == False)) & ((df['Laitages'].str.contains('|'.join(laitages_not_available))==False) | (df['Laitages'].notnull() == False)) & ((df['Congeles'].str.contains('|'.join(congeles_not_available))==False) | (df['Congeles'].notnull() == False)) & ((df['Laitages'].str.contains('|'.join(laitages_not_available))==False) | (df['Laitages'].notnull() == False)) & ((df['Feculents'].str.contains('|'.join(feculents_not_available))==False) | (df['Feculents'].notnull() == False)) & ((df['Autres'].str.contains('|'.join(autres_not_available))==False) | (df['Autres'].notnull() == False))]
+fdf = df[((df['Avec feculents '].str.contains('Non') == feculents) | (df['Avec feculents '].str.contains('Non') == True)) & ((df['Legumes'].str.contains(aliment_choice)==True) | (df['Proteines'].str.contains(aliment_choice)==True) | (df['Laitages'].str.contains(aliment_choice)==True) | (df['Congeles'].str.contains(aliment_choice)==True) |  (df['Laitages'].str.contains(aliment_choice)==True) | (df['Feculents'].str.contains(aliment_choice)==True) | (df['Autres'].str.contains(aliment_choice)==True))]
 
 
 # st.write(fdf)
