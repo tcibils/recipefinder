@@ -38,7 +38,7 @@ st.write("On suppose aussi qu'on a toujours des non-périssables en stock comme 
 st.subheader("Niffling")
 feculents = st.checkbox(label='Sans féculents', value=True, help="Par défaut, ne montre par les recettes incluant des féculents.")
 
-all_aliments = ('Carottes', 'Courgettes', 'Poireaux', 'Tomates', 'Aubergines', 'Poivron', 'Salade verte', 'Concombre', 'Fenouil', 'Chou fleur', 'Haricots', 'Petits pois', 'Epinards', 'Brocolis', 'Poulet', 'Viande hachee', 'Oeufs', 'Lardons', 'Jambon', 'Paneer', 'Bacon', 'Ricotta', 'Gruyere', 'Creme', 'Lait', 'Yaourt nature', 'Mozarella', 'Parmesan', 'Pates', 'Riz', 'Quinoa', 'Pommes de terre', 'Patates douces', 'Pain sec ou panure', 'Puree', 'Semoule', 'Lentilles brunes', 'Lentilles beluga', 'Lentilles corail', 'Pois chiches', 'Pois casses', 'Boulgour', 'Citron', 'Basilic', 'Menthe', 'Gingembre')
+all_aliments = ('Carottes', 'Courgettes', 'Poireaux', 'Tomates', 'Aubergines', 'Poivron', 'Salade verte', 'Concombre', 'Fenouil', 'Chou fleur', 'Haricots', 'Petits pois', 'Epinards', 'Brocolis', 'Poulet', 'Viande hachee', 'Oeufs', 'Lardons', 'Jambon', 'Paneer', 'Bacon', 'Ricotta', 'Gruyere', 'Creme', 'Lait', 'Yaourt nature', 'Mozarella', 'Parmesan', 'Pates', 'Riz', 'Quinoa', 'Pommes de terre', 'Patates douces', 'Pain sec ou panure', 'Puree', 'Semoule', 'Lentilles brunes', 'Lentilles beluga', 'Lentilles corail', 'Pois chiches', 'Pois casses', 'Boulgour', 'Fond de pate', 'Citron', 'Basilic', 'Menthe', 'Gingembre')
 
 aliment_choice = st.selectbox(label='Aliment à cuisiner', options=all_aliments, help="Le truc que tu sais pas cuisiner et pour lequel tu te cherches une recette")
 
