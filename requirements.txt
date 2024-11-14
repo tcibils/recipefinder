@@ -1,5 +1,4 @@
 gspread
 st-gsheets-connection
 pandas
-numpy<2
-git+https://github.com/tcibils/recipefinder
+numpy==1.26.4
