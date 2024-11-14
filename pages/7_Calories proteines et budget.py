@@ -1,6 +1,10 @@
 import streamlit as st
+from streamlit_gsheets import GSheetsConnection
 import pandas as pd
 import gspread as gs
+import plotly.express as px
+
+st.set_page_config(page_title='Cibils Recipe', page_icon='logo/chosen_logo_squared.png', layout='wide')
 
 st.title("Nutrition")
 st.subheader("Règles générales")
@@ -15,14 +19,15 @@ with tab1:
     st.subheader("Matrice")
 
     # --------- Import gsheet with data
+    # Access stuff: https://docs.streamlit.io/develop/tutorials/databases/private-gsheet
     # Use json identifier
-    gc = gs.service_account(filename='recipe-finder-379006-704429557353.json')
-    # Open the spreadsheet link to the input form
-    sh = gc.open_by_url('https://docs.google.com/spreadsheets/d/1D0jkCa6kZNPYVUhioMycLoiBCBDJQWMrVRjy5c6pd7o/edit?usp=sharing')
-    # Open the correct worksheet
-    ws = sh.worksheet('Réponses au formulaire 1')
-    # Convert it in pandas dataframe to be able to work with it
-    df = pd.DataFrame(ws.get_all_records())
+    conn = st.connection("gsheetsAlimentsProteines", type=GSheetsConnection)
+    df = conn.read()
+    
+    # see https://plotly.com/python/3d-charts/
+    fig = px.scatter_3d(df, x='Calories par 100g', y='Proteines par 100g', z='Prix aux 100g', color='Nom de l\'aliment')
+
+    st.plotly_chart(fig, use_container_width=True)
 
     st.write(df)
 
