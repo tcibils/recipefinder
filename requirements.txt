@@ -1,2 +1,4 @@
 gspread
 st-gsheets-connection
+pandas
+numpy

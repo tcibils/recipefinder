@@ -1,7 +1,5 @@
 import streamlit as st
 from streamlit_gsheets import GSheetsConnection
-import pandas as pd
-import gspread as gs
 import plotly.express as px
 
 st.set_page_config(page_title='Cibils Recipe', page_icon='logo/chosen_logo_squared.png', layout='wide')
