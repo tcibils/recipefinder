@@ -38,27 +38,27 @@ with tab1:
     st.write(df)
 
 with tab2:
-	st.subheader("Proteine to Price")
-	figTwoDOne = px.scatter_2d(
+    st.subheader("Proteine to Price")
+    figTwoDOne = px.scatter_2d(
     	df,
         x = 'Proteines par 100g', 
         z='Calories par 100g',
         color='Categorie aliment',
         symbol = 'Nom de l\'aliment',
         size = 'Prix aux 100g'
-        )
+    )
         
     st.plotly_chart(figTwoDOne, use_container_width=True)
     
     st.subheader("Proteine to Price")
-	figTwoDTwo = px.scatter_2d(
+    figTwoDTwo = px.scatter_2d(
     	df,
         x = 'Proteines par 100g', 
         z='Prix aux 100g',
         size='Calories par 100g',
         color='Categorie aliment',
         symbol = 'Nom de l\'aliment'
-        )
+    )
         
     st.plotly_chart(figTwoDTwo, use_container_width=True)
 
