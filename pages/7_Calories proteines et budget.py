@@ -32,7 +32,8 @@ with tab2:
     st.plotly_chart(figThreeD, use_container_width=True)
 
 with tab1:
-    st.subheader("Proteine to Price")
+    st.subheader("Proteine to Calories")
+    st.write("Dans le graphe ci dessous, les points en bas à droite représentent les aliments à forte densité en protéines, mais pauvres en calories. La taille des bulles represente leur prix aux 100g.")
     figTwoDOne = px.scatter(
     	df,
         x = 'Proteines par 100g', 
@@ -45,6 +46,7 @@ with tab1:
     st.plotly_chart(figTwoDOne, use_container_width=True)
     
     st.subheader("Proteine to Price")
+    st.write("Dans le graphe ci dessous, les points en bas à droite représentent les aliments à forte densité en protéines, et peu chers. La taille des bulles represente leurs calories aux 100g.")
     figTwoDTwo = px.scatter(
     	df,
         x = 'Proteines par 100g', 
@@ -61,7 +63,7 @@ with tab3:
 
 with tab4:
     st.subheader("Règles générales")
-    st.write("C'est pas très compliqué tout ça.")
+    st.write("À mon avis, tout ca n'est pas si compliqué.")
     st.write("La graisse, c'est de l'énergie stockée. L'unité c'est les calories, 1kg de gras c'est 7700 calories. L'énergie que tu manges, c'est compté en calories positives. De base tu brules environ 2000 calories par jour. Bouger et faire du cardio, ça fait des calories négatives. Si tu manges moins que ta dépense, tu perds du gras. Sinon tu en prends. Donc soit bouge, soit mange moins de calories, et tu maigriras.")
     st.write("Le muscle, ça se déchire avec l'exercice. Si tu manges des protéines, ça le répare et le fait grossir.")
     st.write("D'où les visualisations sur cette page : tu peux voir les aliments avec beaucoup de protéines pour peu de calories. J'ai aussi ajouté la dimension prix...")
