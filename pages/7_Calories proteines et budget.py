@@ -42,7 +42,7 @@ with tab2:
     figTwoDOne = px.scatter(
     	df,
         x = 'Proteines par 100g', 
-        z='Calories par 100g',
+        y='Calories par 100g',
         color='Categorie aliment',
         hover_data = 'Nom de l\'aliment',
         size = 'Prix aux 100g'
@@ -54,7 +54,7 @@ with tab2:
     figTwoDTwo = px.scatter(
     	df,
         x = 'Proteines par 100g', 
-        z='Prix aux 100g',
+        y='Prix aux 100g',
         size='Calories par 100g',
         color='Categorie aliment',
         symbol = 'Nom de l\'aliment'
