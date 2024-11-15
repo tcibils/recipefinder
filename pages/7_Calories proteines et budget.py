@@ -23,7 +23,14 @@ with tab1:
     df = conn.read()
     
     # see https://plotly.com/python/3d-charts/
-    fig = px.scatter_3d(df, x='Calories par 100g', y='Proteines par 100g', z='Prix aux 100g', color='Nom de l\'aliment')
+    fig = px.scatter_3d(
+    	df, 
+        x='Calories par 100g', 
+        y='Proteines par 100g', 
+        z='Prix aux 100g', 
+        color='Categorie aliment',
+        symbol='Nom de l\'aliment'
+        )
 
     st.plotly_chart(fig, use_container_width=True)
 
