@@ -57,7 +57,7 @@ with tab2:
         y='Prix aux 100g',
         size='Calories par 100g',
         color='Categorie aliment',
-        symbol = 'Nom de l\'aliment'
+        hover_data = 'Nom de l\'aliment'
     )
         
     st.plotly_chart(figTwoDTwo, use_container_width=True)
