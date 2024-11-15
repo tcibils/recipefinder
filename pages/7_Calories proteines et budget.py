@@ -11,19 +11,20 @@ st.write("La graisse, c'est de l'énergie stockée. L'unité c'est les calories,
 st.write("Le muscle, ça se déchire avec l'exercice. Si tu manges des protéines, ça le répare et le fait grossir.")
 st.write("D'où les visualisations ci-dessous : tu peux voir les aliments avec beaucoup de protéines pour peu de calories. J'ai aussi ajouté la dimension prix...")
 
-tab1, tab2 = st.tabs(["Data", "Input form"])
+tab1, tab2, tab3 = st.tabs(["3D Data", "2D Data", "Input form"])
+
+
+
+# --------- Import gsheet with data
+# Access stuff: https://docs.streamlit.io/develop/tutorials/databases/private-gsheet
+conn = st.connection("gsheetsAlimentsProteines", type=GSheetsConnection
+df = conn.read()
 
 with tab1:
     st.subheader("Matrice")
-
-    # --------- Import gsheet with data
-    # Access stuff: https://docs.streamlit.io/develop/tutorials/databases/private-gsheet
-    # Use json identifier
-    conn = st.connection("gsheetsAlimentsProteines", type=GSheetsConnection)
-    df = conn.read()
     
     # see https://plotly.com/python/3d-charts/
-    fig = px.scatter_3d(
+    figThreeD = px.scatter_3d(
     	df, 
         x='Calories par 100g', 
         y='Proteines par 100g', 
@@ -32,9 +33,35 @@ with tab1:
         symbol='Nom de l\'aliment'
         )
 
-    st.plotly_chart(fig, use_container_width=True)
+    st.plotly_chart(figThreeD, use_container_width=True)
 
     st.write(df)
 
 with tab2:
+	st.subheader("Proteine to Price")
+	figTwoDOne = px.scatter_2d(
+    	df,
+        x = 'Proteines par 100g', 
+        z='Calories par 100g'
+        color='Categorie aliment',
+        symbol = 'Nom de l\'aliment'
+        )
+        
+    st.plotly_chart(figTwoDOne, use_container_width=True)
+    
+    st.subheader("Proteine to Price")
+	figTwoDTwo = px.scatter_2d(
+    	df,
+        x = 'Proteines par 100g', 
+        z='Prix par 100g'
+        color='Categorie aliment',
+        symbol = 'Nom de l\'aliment'
+        )
+        
+    st.plotly_chart(figTwoDTwo, use_container_width=True)
+
+    st.write(df)
+
+
+with tab3:
     st.components.v1.iframe(src="https://docs.google.com/forms/d/e/1FAIpQLScZHgBQCmItwf1iI0_FuqO4VRCmDLlfs4YEts8KbGWvlmswIQ/viewform?embedded=true", width=700, height=3800, scrolling=True)
