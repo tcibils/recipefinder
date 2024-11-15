@@ -17,7 +17,7 @@ tab1, tab2, tab3 = st.tabs(["3D Data", "2D Data", "Input form"])
 
 # --------- Import gsheet with data
 # Access stuff: https://docs.streamlit.io/develop/tutorials/databases/private-gsheet
-conn = st.connection("gsheetsAlimentsProteines", type=GSheetsConnection
+conn = st.connection("gsheetsAlimentsProteines", type=GSheetsConnection)
 df = conn.read()
 
 with tab1:
