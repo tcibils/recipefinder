@@ -44,7 +44,8 @@ with tab2:
         x = 'Proteines par 100g', 
         z='Calories par 100g'
         color='Categorie aliment',
-        symbol = 'Nom de l\'aliment'
+        symbol = 'Nom de l\'aliment',
+        size = 'Prix aux 100g'
         )
         
     st.plotly_chart(figTwoDOne, use_container_width=True)
@@ -53,7 +54,8 @@ with tab2:
 	figTwoDTwo = px.scatter_2d(
     	df,
         x = 'Proteines par 100g', 
-        z='Prix par 100g'
+        z='Prix par 100g',
+        size='Calories par 100g',
         color='Categorie aliment',
         symbol = 'Nom de l\'aliment'
         )
