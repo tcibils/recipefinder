@@ -30,7 +30,7 @@ with tab1:
         y='Proteines par 100g', 
         z='Prix aux 100g', 
         color='Categorie aliment',
-        symbol='Nom de l\'aliment'
+        hover_data='Nom de l\'aliment'
         )
 
     st.plotly_chart(figThreeD, use_container_width=True)
@@ -39,19 +39,19 @@ with tab1:
 
 with tab2:
     st.subheader("Proteine to Price")
-    figTwoDOne = px.scatter_2d(
+    figTwoDOne = px.scatter(
     	df,
         x = 'Proteines par 100g', 
         z='Calories par 100g',
         color='Categorie aliment',
-        symbol = 'Nom de l\'aliment',
+        hover_data = 'Nom de l\'aliment',
         size = 'Prix aux 100g'
     )
         
     st.plotly_chart(figTwoDOne, use_container_width=True)
     
     st.subheader("Proteine to Price")
-    figTwoDTwo = px.scatter_2d(
+    figTwoDTwo = px.scatter(
     	df,
         x = 'Proteines par 100g', 
         z='Prix aux 100g',
