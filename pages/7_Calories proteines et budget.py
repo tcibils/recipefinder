@@ -51,7 +51,8 @@ with tab1:
         x = 'Proteines par 100g', 
         y='Calories par 100g',
         symbol='Categorie aliment',
-        color = 'Prix aux 100g'
+        color = 'Prix aux 100g',
+        color_continuous_scale='Plasma'
     )
     
     st.plotly_chart(figTwoDThree, use_container_width=True)
