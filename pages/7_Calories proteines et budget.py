@@ -33,7 +33,7 @@ with tab2:
 
 with tab1:
     st.subheader("Proteine to Calories")
-    st.write("Dans le graphe ci dessous, les points en bas à droite représentent les aliments à forte densité en protéines, mais pauvres en calories. La taille des bulles represente leur prix aux 100g.")
+    st.write("Dans les graphes ci dessous, les points en bas à droite représentent les aliments à forte densité en protéines, mais pauvres en calories. La taille des bulles ou leur couleur representent leur prix aux 100g.")
     figTwoDOne = px.scatter(
     	df,
         x = 'Proteines par 100g', 
@@ -44,6 +44,15 @@ with tab1:
     )
         
     st.plotly_chart(figTwoDOne, use_container_width=True)
+    
+    figTwoDThree = px.scatter(
+    	df,
+        hover_data = 'Nom de l\'aliment',
+        x = 'Proteines par 100g', 
+        y='Calories par 100g',
+        symbol='Categorie aliment',
+        color = 'Prix aux 100g'
+    )
     
     st.subheader("Proteine to Price")
     st.write("Dans le graphe ci dessous, les points en bas à droite représentent les aliments à forte densité en protéines, et peu chers. La taille des bulles represente leurs calories aux 100g.")
