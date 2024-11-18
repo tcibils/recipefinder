@@ -147,7 +147,7 @@ with tab6:
         df['Proteines consommee'] = pd.Series(dtype='int')
         df['Total proteines consommees'] = 0    
 
-        categoriesToFilter = st.pills(label='Table filter:', options=['Animale','Poisson','Lactique','Legumineuse','Noix','Artificiel'],disabled=True,help='I can sort the table with this, but it erases the input from the users everytime the filtering is changed')
+        # categoriesToFilter = st.pills(label='Table filter:', options=['Animale','Poisson','Lactique','Legumineuse','Noix','Artificiel'],disabled=True,help='I can sort the table with this, but it erases the input from the users everytime the filtering is changed')
         # df = df[df['Categorie aliment'] == categoriesToFilter]
         df = st.data_editor(
             df, 
