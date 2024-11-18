@@ -190,6 +190,7 @@ with tab6:
         st.subheader("Proteines consommees")
         
         # selection = st.segmented_control(label="Choisir le dicing", options=["Repas", "Categorie aliment", "Nom de l\'aliment"], disabled=True, default="Categorie aliment", help="Not implemented yet.")
+        selection = "Categorie aliment"
         figDailyProt = px.bar(df, x='Total proteines consommees', y="Proteines consommee", color=selection, hover_name='Nom de l\'aliment', hover_data=['Total Portions', 'Proteines par 100g'])
         figDailyProt.add_hline(y=targetProteins, line_dash="dash", line_color="green")
         
