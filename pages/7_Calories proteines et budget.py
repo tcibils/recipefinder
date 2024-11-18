@@ -21,12 +21,12 @@ with tab2:
     st.subheader("3D visualisation")
     
     # see https://plotly.com/python/3d-charts/
-    st.write("Ici, on montre simplement les points dans un espace, selon leurs calories aux 100g, leurs protéines aux 100g et leur prix aux 100g.")
+    st.write("Ici, on montre simplement les points dans un espace, selon leurs calories aux 100g, leurs protéines aux 100g et leur Prix par 100g.")
     figThreeDOne = px.scatter_3d(
     	df, 
         x='Calories par 100g', 
         y='Proteines par 100g', 
-        z='Prix aux 100g', 
+        z='Prix par 100g', 
         color='Categorie aliment',
         hover_name='Nom de l\'aliment'
         )
@@ -39,20 +39,20 @@ with tab2:
         df,
         x='Calories par 100g', 
         y='Proteines par 100g', 
-        z='Prix aux 100g', 
+        z='Prix par 100g', 
         size='Calories par 100g', 
         color='Categorie aliment',
         hover_name='Nom de l\'aliment')
     st.plotly_chart(figThreeDTwo, use_container_width=True)
 
     # see https://plotly.com/python/3d-charts/
-    st.write("Ici, de même à nouveau, mais leur taille est aussi proportionelle à leur prix aux 100g.")
+    st.write("Ici, de même à nouveau, mais leur taille est aussi proportionelle à leur Prix par 100g.")
     figThreeDTwo = px.scatter_3d(
         df,
         x='Calories par 100g', 
         y='Proteines par 100g', 
-        z='Prix aux 100g', 
-        size='Prix aux 100g', 
+        z='Prix par 100g', 
+        size='Prix par 100g', 
         color='Categorie aliment',
         hover_name='Nom de l\'aliment')
     st.plotly_chart(figThreeDTwo, use_container_width=True)
@@ -60,14 +60,14 @@ with tab2:
 
 with tab1:
     st.subheader("Proteine to Calories")
-    st.write("Dans les graphes ci dessous, les points en bas à droite représentent les aliments à forte densité en protéines, mais pauvres en calories. La taille des bulles ou leur couleur representent leur prix aux 100g.")
+    st.write("Dans les graphes ci dessous, les points en bas à droite représentent les aliments à forte densité en protéines, mais pauvres en calories. La taille des bulles ou leur couleur representent leur Prix par 100g.")
     figTwoDOne = px.scatter(
     	df,
         x = 'Proteines par 100g', 
         y='Calories par 100g',
         color='Categorie aliment',
         hover_name = 'Nom de l\'aliment',
-        size = 'Prix aux 100g'
+        size = 'Prix par 100g'
     )
         
     st.plotly_chart(figTwoDOne, use_container_width=True)
@@ -88,7 +88,7 @@ with tab1:
     figTwoDTwo = px.scatter(
     	df,
         x = 'Proteines par 100g', 
-        y='Prix aux 100g',
+        y='Prix par 100g',
         size='Calories par 100g',
         color='Categorie aliment',
         hover_name = 'Nom de l\'aliment'
@@ -101,7 +101,7 @@ with tab1:
     figTwoDFour = px.scatter(
     	df,
         x = 'Proteines par 100g', 
-        y='Prix aux 100g',
+        y='Prix par 100g',
         color='Categorie aliment',
         hover_name = 'Nom de l\'aliment'
     )
@@ -125,22 +125,30 @@ with tab5:
 with tab6:
     st.subheader("Proteine Daily")
     userWeight = st.slider(label="Entrez votre poids avec le slide ci-dessous", min_value = 50, max_value = 100, value = 70)
+    targetProteinsMin = userWeight * 1.2
+    targetProteinsMax = userWeight * 2
+    targetProteins = userWeight * 1.6
+    st.write("Pour optimiser la prise de muscle, on doit manger entre 1.2 et 2g de protéine par kg de poid personnel. Cela vous donne donc " + str(targetProteins) + "g de proteines à manger par jour (minimum " + str(targetProteinsMin) + ", maximum " + str(targetProteinsMax) + "), ce qui est reflété dans le graphe.")
+
     col1, col2 = st.columns(2)
 
-    with col1:
-        targetProteinsMin = userWeight * 1.2
-        targetProteinsMax = userWeight * 2
-        targetProteins = userWeight * 1.6
-        st.subheader("Entree des donnees")
-        st.write("Pour optimiser la prise de muscle, on doit manger entre 1.2 et 2g de protéine par kg de poid personnel. Cela vous donne donc " + str(targetProteins) + "g de proteines à manger par jour (minimum " + str(targetProteinsMin) + ", maximum " + str(targetProteinsMax) + ")")
 
+    with col1:
+        st.subheader("Entree des donnees")
+
+        df['Matin'] = False
+        df['Midi'] = False
+        df['Gouter'] = False
+        df['Soir'] = False
+        df['Snack'] = False
         df['Repas'] = ""
-        df['Quantite consommee'] = pd.Series(dtype='int')
+        df['Portions'] = 0
+        df['Nb portion calcule'] = 0
         df['Proteines consommee'] = pd.Series(dtype='int')
         df['Total proteines consommees'] = 0    
 
-
-
+        categoriesToFilter = st.pills(label='Table filter:', options=['Animale','Poisson','Lactique','Legumineuse','Noix','Artificiel'],disabled=True,help='I can sort the table with this, but it erases the input from the users everytime the filtering is changed')
+        # df = df[df['Categorie aliment'] == categoriesToFilter]
         df = st.data_editor(
             df, 
             column_config={
@@ -149,7 +157,7 @@ with tab6:
                     disabled=True
                 ),
                 'Proteines par 100g': None, 
-                'Prix aux 100g': None,
+                'Prix par 100g': None,
                 'Calories par 100g': None,
                 'Kiff aux 100g ': None,
                 'Proteines par portion': None,
@@ -157,30 +165,32 @@ with tab6:
                 'Calories par portion': None,
                 'Categorie aliment': None,
                 'URL Source': None,
-                'Repas': st.column_config.SelectboxColumn(
-                        options = [
-                            "Petit dej",
-                            "Midi",
-                            "Gouter",
-                            "Soir",
-                            "Snack"
-                        ]
-                    ),
-                'Quantite consommee': st.column_config.NumberColumn(
-                    step=1,
-                    format="%d g"
+                'Matin': st.column_config.CheckboxColumn(),
+                'Midi': st.column_config.CheckboxColumn(),
+                'Gouter': st.column_config.CheckboxColumn(),
+                'Soir': st.column_config.CheckboxColumn(),
+                'Snack': st.column_config.CheckboxColumn(),
+                'Repas': None,
+                'Portions': st.column_config.NumberColumn(
+                    step = 0.1,
+                    format="%f portions"
                 ),
                 'Proteines consommee': None,
-                'Total proteines consommees': None
+                'Total proteines consommees': None,
+                'Portion en g': st.column_config.NumberColumn(),
+                'Nb portion calcule': None
             },
             hide_index = True)
-
-        df['Proteines consommee'] = df['Quantite consommee'] * (df['Proteines par 100g'] / 100)
+        
+        df['Nb portion calcule'] = df['Matin'].astype(int) + df['Midi'].astype(int) + df['Gouter'].astype(int) + df['Soir'].astype(int) + df['Snack'].astype(int)
+        df['Total Portions'] = df[['Nb portion calcule', 'Portions']].max(axis='columns')
+        df['Proteines consommee'] = df['Total Portions'] * df['Proteines par portion']
 
     with col2:
         st.subheader("Proteines consommees")
-        selection = st.segmented_control(label="Choisir le dicing", options=["Repas", "Categorie aliment", "Nom de l\'aliment"])
-        figDailyProt = px.bar(df, x='Total proteines consommees', y="Proteines consommee", color=selection, hover_name='Nom de l\'aliment', hover_data=['Quantite consommee', 'Proteines par 100g'])
+        
+        selection = st.segmented_control(label="Choisir le dicing", options=["Repas", "Categorie aliment", "Nom de l\'aliment"], disabled=True, default="Categorie aliment", help="Not implemented yet.")
+        figDailyProt = px.bar(df, x='Total proteines consommees', y="Proteines consommee", color=selection, hover_name='Nom de l\'aliment', hover_data=['Total Portions', 'Proteines par 100g'])
         figDailyProt.add_hline(y=targetProteins, line_dash="dash", line_color="green")
         
         figDailyProt.add_hrect(y0=targetProteinsMin, y1=targetProteinsMax, line_width=0, fillcolor="green", opacity=0.2)
