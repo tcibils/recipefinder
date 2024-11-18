@@ -1,13 +1,14 @@
 import streamlit as st
 from streamlit_gsheets import GSheetsConnection
 import plotly.express as px
+import pandas as pd
 
 st.set_page_config(page_title='Cibils Recipe', page_icon='logo/chosen_logo_squared.png', layout='wide')
 
 st.title("Nutrition")
 
 
-tab1, tab2, tab3, tab4, tab5 = st.tabs(["2D Data", "3D Data", "Full database", "Concept", "Input form"])
+tab1, tab2, tab3, tab4, tab5, tab6 = st.tabs(["2D Data", "3D Data", "Full database", "Concept", "Input form", "Proteines du jour"])
 
 
 
@@ -120,3 +121,69 @@ with tab4:
     st.write("Thomas - 17.11.2024")
 with tab5:
     st.components.v1.iframe(src="https://docs.google.com/forms/d/e/1FAIpQLScZHgBQCmItwf1iI0_FuqO4VRCmDLlfs4YEts8KbGWvlmswIQ/viewform?embedded=true", width=700, height=3800, scrolling=True)
+
+with tab6:
+    st.subheader("Proteine Daily")
+    userWeight = st.slider(label="Entrez votre poids avec le slide ci-dessous", min_value = 50, max_value = 100, value = 70)
+    col1, col2 = st.columns(2)
+
+    with col1:
+        targetProteinsMin = userWeight * 1.2
+        targetProteinsMax = userWeight * 2
+        targetProteins = userWeight * 1.6
+        st.subheader("Entree des donnees")
+        st.write("Pour optimiser la prise de muscle, on doit manger entre 1.2 et 2g de protéine par kg de poid personnel. Cela vous donne donc " + str(targetProteins) + "g de proteines à manger par jour (minimum " + str(targetProteinsMin) + ", maximum " + str(targetProteinsMax) + ")")
+
+        df['Repas'] = ""
+        df['Quantite consommee'] = pd.Series(dtype='int')
+        df['Proteines consommee'] = pd.Series(dtype='int')
+        df['Total proteines consommees'] = 0    
+
+
+
+        df = st.data_editor(
+            df, 
+            column_config={
+                "Horodateur": None,
+                'Nom de l\'aliment': st.column_config.TextColumn(
+                    disabled=True
+                ),
+                'Proteines par 100g': None, 
+                'Prix aux 100g': None,
+                'Calories par 100g': None,
+                'Kiff aux 100g ': None,
+                'Proteines par portion': None,
+                'Prix par portion': None,
+                'Calories par portion': None,
+                'Categorie aliment': None,
+                'URL Source': None,
+                'Repas': st.column_config.SelectboxColumn(
+                        options = [
+                            "Petit dej",
+                            "Midi",
+                            "Gouter",
+                            "Soir",
+                            "Snack"
+                        ]
+                    ),
+                'Quantite consommee': st.column_config.NumberColumn(
+                    step=1,
+                    format="%d g"
+                ),
+                'Proteines consommee': None,
+                'Total proteines consommees': None
+            },
+            hide_index = True)
+
+        df['Proteines consommee'] = df['Quantite consommee'] * (df['Proteines par 100g'] / 100)
+
+    with col2:
+        st.subheader("Proteines consommees")
+        selection = st.segmented_control(label="Choisir le dicing", options=["Repas", "Categorie aliment", "Nom de l\'aliment"])
+        figDailyProt = px.bar(df, x='Total proteines consommees', y="Proteines consommee", color=selection, hover_name='Nom de l\'aliment', hover_data=['Quantite consommee', 'Proteines par 100g'])
+        figDailyProt.add_hline(y=targetProteins, line_dash="dash", line_color="green")
+        
+        figDailyProt.add_hrect(y0=targetProteinsMin, y1=targetProteinsMax, line_width=0, fillcolor="green", opacity=0.2)
+        st.plotly_chart(figDailyProt, use_container_width=True)
+
+    st.write(df)
