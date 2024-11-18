@@ -163,7 +163,7 @@ with tab6:
                 'Proteines par portion': None,
                 'Prix par portion': None,
                 'Calories par portion': None,
-                'Categorie aliment': None,
+                'Categorie aliment': st.column_config.TextColumn(),
                 'URL Source': None,
                 'Matin': st.column_config.CheckboxColumn(),
                 'Midi': st.column_config.CheckboxColumn(),
