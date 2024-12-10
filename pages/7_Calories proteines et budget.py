@@ -169,9 +169,6 @@ with tab6:
                 'Prix par 100g': None,
                 'Calories par 100g': None,
                 'Kiff aux 100g ': None,
-                'Proteines par portion': None,
-                'Prix par portion': None,
-                'Calories par portion': None,
                 'Categorie aliment': st.column_config.TextColumn(),
                 'URL Source': None,
                 'Matin': st.column_config.CheckboxColumn(),
@@ -193,7 +190,7 @@ with tab6:
         
         df['Nb portion calcule'] = df['Matin'].astype(int) + df['Midi'].astype(int) + df['Gouter'].astype(int) + df['Soir'].astype(int) + df['Snack'].astype(int)
         df['Total Portions'] = df[['Nb portion calcule', 'Portions']].max(axis='columns')
-        df['Proteines consommee'] = df['Total Portions'] * df['Proteines par portion']
+        df['Proteines consommee'] = df['Total Portions'] * (df['Proteines par 100g'] / 100) * df['Portion en g']
 
     with col2:
         st.subheader("Proteines consommees")
