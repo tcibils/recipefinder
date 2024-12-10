@@ -123,17 +123,19 @@ with tab4:
     st.write("Pour le muscle: ça se déchire avec l'exercice. Si tu manges des protéines, ça le répare et le fait grossir. D'où les visualisations sur cette page : tu peux voir les aliments avec beaucoup de protéines pour peu de calories. J'ai aussi ajouté la dimension prix.")
     st.write("Attention, connaître la quantité de protéines ne suffit pas! Leur composition en acides aminés est importante pour leur absorbtion par le corps! Je dois me résumer et créer des vidéos avec les infos de cette vidéo:")
     st.video(data="https://www.youtube.com/watch?v=0iUtJAyzOMY")
+    st.markdown("[Source 1](https://www.anses.fr/fr/content/les-proteines), [Source 2](https://youtu.be/eoSrjDn7qT4?si=V2n304J_JugYx6Er&t=117)")
     st.write("Thomas - 17.11.2024")
+
 with tab5:
     st.components.v1.iframe(src="https://docs.google.com/forms/d/e/1FAIpQLScZHgBQCmItwf1iI0_FuqO4VRCmDLlfs4YEts8KbGWvlmswIQ/viewform?embedded=true", width=700, height=3800, scrolling=True)
 
 with tab6:
     st.subheader("Proteine Daily")
-    userWeight = st.slider(label="Entrez votre poids avec le slide ci-dessous", min_value = 50, max_value = 100, value = 70)
-    targetProteinsMin = userWeight * 1.2
-    targetProteinsMax = userWeight * 2
-    targetProteins = userWeight * 1.6
-    st.write("Pour optimiser la prise de muscle, on doit manger entre 1.2 et 2g de protéine par kg de poid personnel. Cela vous donne donc " + str(targetProteins) + "g de proteines à manger par jour (minimum " + str(targetProteinsMin) + ", maximum " + str(targetProteinsMax) + "), ce qui est reflété dans le graphe.")
+    userWeight = st.slider(label="Entrez votre poids avec le slide ci-dessous", min_value = 50, max_value = 100, value = 75)
+    targetProteinsMin = userWeight * 1.4
+    targetProteinsMax = userWeight * 2.2
+    targetProteins = userWeight * 1.8
+    st.write("Hors prise de muscle, on conseille 1 à 1.3g de protéines par poids de corps. Pour optimiser la prise de muscle, en fonction de l'activité, on augmente au prorata jusqu'à 2.2g par kg de poid personnel. ([Source](https://youtu.be/eoSrjDn7qT4?si=V2n304J_JugYx6Er&t=117)) Cela vous donne donc " + str(targetProteins) + "g de proteines à manger par jour (minimum " + str(targetProteinsMin) + ", maximum " + str(targetProteinsMax) + "), ce qui est reflété dans le graphe.")
 
     col1, col2 = st.columns(2)
 
