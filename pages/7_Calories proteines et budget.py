@@ -112,12 +112,17 @@ with tab3:
     st.write(df)
 
 with tab4:
-    st.subheader("Nutrition - ma compréhension pour le moment")
-    st.write("Voilà ce que j'en comprends pour le moment.")
-    st.write("La graisse, c'est de l'énergie stockée par le corps, et ça se compte en calories, 1kg de gras étant 7700 calories. Ce qu'on mange est compté en calories positives. En négatif, on brule environ 2000 calories par jour, selon notre poids, taille, etc. Bouger et faire du cardio, ça fait des calories négatives en plus. Si tu manges moins que ta dépense, tu perds du gras. Sinon tu en prends. Et ça se voit sur 2-3 semaines à cause des processus du corps.")
+    st.header("Nutrition - ma compréhension pour le moment")
+    st.subheader("Calories, énergie, gras")
+    st.markdown(" * La graisse, c'est de l'énergie stockée par le corps, et ça se compte en calories. 1kg de gras vaut environ 7700 calories.")
+    st.markdown(" * L'énergie comprise dans ce qu'on mange est également compté en calories, comme apport. Chaque aliment apporte une certaine quantité de calories par 100g.")
+    st.markdown(" * En négatif, on brule environ 2000 calories par jour, selon notre poids, taille, etc. Bouger et faire du cardio, ça fait des calories négatives en plus.")
+    st.markdown("Donc, si on mange moins que la dépense totale, on dépense plus d'énergie qu'on en consomme, et le corps prend le déficit dans le gras qu'on commence à perdre. Si on mange plus que la dépense totale, le corps stock, on en prend. Et ça se voit sur 2-3 semaines à cause des processus du corps.")
     st.write("Donc pour maigrir, soit bouge, soit mange moins de calories, soit les deux. Et pour ne pas avoir faim, si manger des carbs cale sur le moment, manger des fibres et des protéines est ce qui lisse leur action dans le temps, et évite d'avoir faim à nouveau trop vite.")
-    st.write("Pour le muscle: ça se déchire avec l'exercice. Si tu manges des protéines, ça le répare et le fait grossir.")
-    st.write("D'où les visualisations sur cette page : tu peux voir les aliments avec beaucoup de protéines pour peu de calories. J'ai aussi ajouté la dimension prix...")
+    st.subheader("Protéines et muscles")
+    st.write("Pour le muscle: ça se déchire avec l'exercice. Si tu manges des protéines, ça le répare et le fait grossir. D'où les visualisations sur cette page : tu peux voir les aliments avec beaucoup de protéines pour peu de calories. J'ai aussi ajouté la dimension prix.")
+    st.write("Attention, connaître la quantité de protéines ne suffit pas! Leur composition en acides aminés est importante pour leur absorbtion par le corps! Je dois me résumer et créer des vidéos avec les infos de cette vidéo:")
+    st.video(data="https://www.youtube.com/watch?v=0iUtJAyzOMY")
     st.write("Thomas - 17.11.2024")
 with tab5:
     st.components.v1.iframe(src="https://docs.google.com/forms/d/e/1FAIpQLScZHgBQCmItwf1iI0_FuqO4VRCmDLlfs4YEts8KbGWvlmswIQ/viewform?embedded=true", width=700, height=3800, scrolling=True)
@@ -146,6 +151,8 @@ with tab6:
         df['Nb portion calcule'] = 0
         df['Proteines consommee'] = pd.Series(dtype='int')
         df['Total proteines consommees'] = 0    
+
+        
 
         # categoriesToFilter = st.pills(label='Table filter:', options=['Animale','Poisson','Lactique','Legumineuse','Noix','Artificiel'],disabled=True,help='I can sort the table with this, but it erases the input from the users everytime the filtering is changed')
         # df = df[df['Categorie aliment'] == categoriesToFilter]
