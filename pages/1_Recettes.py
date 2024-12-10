@@ -25,7 +25,7 @@ df = conn.read()
 # ----------------------------------
 
 
-tabA, tabB, tabC, tabD = st.tabs(["Methode Aurore", "Je peux faire les courses", "Comment je cuisine cet aliment", "Pour tout le monde"])
+tabA, tabB, tabC, tabD, tabE = st.tabs(["Methode Aurore", "Je peux faire les courses", "Comment je cuisine cet aliment", "Pour tout le monde", "Full database"])
 
 with tabA:
     st.title("Méthode Aurore")
@@ -244,3 +244,9 @@ with tabD:
         frigo_rempli = st.slider(label="Ton frigo est rempli?", min_value=1, max_value=5, value=3, step=1, help="Si ton frigo est plus ou moins plein en gros. C'est moi qui fait les hypothèses sur ce que ça veut dire :-) Désactivé pour le moment", disabled=True)
 
     df[(df['Temps de preparation (duree totale, en minutes)'] < time_to_cook) & (df['Complexite'] <= cooking_skill)]
+
+with tabE:
+    st.write("Le but de cette partie du site est de parcourir une petite base de données de recettes, pour avoir facilement de l'inspiration au moment de se faire un repas.")
+
+    st.write("Voici dessous la base de données complète")
+    st.write(df)
