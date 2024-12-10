@@ -8,7 +8,7 @@ st.set_page_config(page_title='Cibils Recipe', page_icon='logo/chosen_logo_squar
 st.title("Nutrition")
 
 
-tab1, tab2, tab3, tab4, tab5, tab6 = st.tabs(["2D Data", "3D Data", "Full database", "Concept", "Input form", "Proteines du jour"])
+tab1, tab2, tab3, tab4, tab5 = st.tabs(["Concept", "2D Data", "3D Data", "Proteines du jour", "Full database"])
 
 
 
@@ -17,7 +17,23 @@ tab1, tab2, tab3, tab4, tab5, tab6 = st.tabs(["2D Data", "3D Data", "Full databa
 conn = st.connection("gsheetsAlimentsProteines", type=GSheetsConnection)
 df = conn.read()
 
-with tab2:
+with tab1:
+    st.header("Nutrition - ma compréhension pour le moment")
+    st.subheader("Calories, énergie, gras")
+    st.markdown(" * La graisse, c'est de l'énergie stockée par le corps, et ça se compte en calories. 1kg de gras vaut environ 7700 calories.")
+    st.markdown(" * L'énergie comprise dans ce qu'on mange est également compté en calories, comme apport. Chaque aliment apporte une certaine quantité de calories par 100g.")
+    st.markdown(" * En négatif, on brule environ 2000 calories par jour, selon notre poids, taille, etc. Bouger et faire du cardio, ça fait des calories négatives en plus.")
+    st.markdown("Donc, si on mange moins que la dépense totale, on dépense plus d'énergie qu'on en consomme, et le corps prend le déficit dans le gras qu'on commence à perdre. Si on mange plus que la dépense totale, le corps stock, on en prend. Et ça se voit sur 2-3 semaines à cause des processus du corps.")
+    st.write("Donc pour maigrir, soit bouge, soit mange moins de calories, soit les deux. Et pour ne pas avoir faim, si manger des carbs cale sur le moment, manger des fibres et des protéines est ce qui lisse leur action dans le temps, et évite d'avoir faim à nouveau trop vite.")
+    st.subheader("Protéines et muscles")
+    st.write("Pour le muscle: ça se déchire avec l'exercice. Si tu manges des protéines, ça le répare et le fait grossir. D'où les visualisations sur cette page : tu peux voir les aliments avec beaucoup de protéines pour peu de calories. J'ai aussi ajouté la dimension prix.")
+    st.write("Attention, connaître la quantité de protéines ne suffit pas! Leur composition en acides aminés est importante pour leur absorbtion par le corps! Je dois me résumer et créer des vidéos avec les infos de cette vidéo:")
+    st.video(data="https://www.youtube.com/watch?v=0iUtJAyzOMY")
+    st.markdown("[Source 1](https://www.anses.fr/fr/content/les-proteines), [Source 2](https://youtu.be/eoSrjDn7qT4?si=V2n304J_JugYx6Er&t=117)")
+    st.write("Thomas - 17.11.2024")
+
+
+with tab3:
     st.subheader("3D visualisation")
     
     # see https://plotly.com/python/3d-charts/
@@ -58,7 +74,7 @@ with tab2:
     st.plotly_chart(figThreeDTwo, use_container_width=True)
 
 
-with tab1:
+with tab2:
     st.subheader("Proteine to Calories")
     st.write("Dans les graphes ci dessous, les points en bas à droite représentent les aliments à forte densité en protéines, mais pauvres en calories. La taille des bulles ou leur couleur representent leur Prix par 100g.")
     figTwoDOne = px.scatter(
@@ -108,28 +124,10 @@ with tab1:
         
     st.plotly_chart(figTwoDFour, use_container_width=True)
 
-with tab3:
+with tab5:
     st.write(df)
 
 with tab4:
-    st.header("Nutrition - ma compréhension pour le moment")
-    st.subheader("Calories, énergie, gras")
-    st.markdown(" * La graisse, c'est de l'énergie stockée par le corps, et ça se compte en calories. 1kg de gras vaut environ 7700 calories.")
-    st.markdown(" * L'énergie comprise dans ce qu'on mange est également compté en calories, comme apport. Chaque aliment apporte une certaine quantité de calories par 100g.")
-    st.markdown(" * En négatif, on brule environ 2000 calories par jour, selon notre poids, taille, etc. Bouger et faire du cardio, ça fait des calories négatives en plus.")
-    st.markdown("Donc, si on mange moins que la dépense totale, on dépense plus d'énergie qu'on en consomme, et le corps prend le déficit dans le gras qu'on commence à perdre. Si on mange plus que la dépense totale, le corps stock, on en prend. Et ça se voit sur 2-3 semaines à cause des processus du corps.")
-    st.write("Donc pour maigrir, soit bouge, soit mange moins de calories, soit les deux. Et pour ne pas avoir faim, si manger des carbs cale sur le moment, manger des fibres et des protéines est ce qui lisse leur action dans le temps, et évite d'avoir faim à nouveau trop vite.")
-    st.subheader("Protéines et muscles")
-    st.write("Pour le muscle: ça se déchire avec l'exercice. Si tu manges des protéines, ça le répare et le fait grossir. D'où les visualisations sur cette page : tu peux voir les aliments avec beaucoup de protéines pour peu de calories. J'ai aussi ajouté la dimension prix.")
-    st.write("Attention, connaître la quantité de protéines ne suffit pas! Leur composition en acides aminés est importante pour leur absorbtion par le corps! Je dois me résumer et créer des vidéos avec les infos de cette vidéo:")
-    st.video(data="https://www.youtube.com/watch?v=0iUtJAyzOMY")
-    st.markdown("[Source 1](https://www.anses.fr/fr/content/les-proteines), [Source 2](https://youtu.be/eoSrjDn7qT4?si=V2n304J_JugYx6Er&t=117)")
-    st.write("Thomas - 17.11.2024")
-
-with tab5:
-    st.components.v1.iframe(src="https://docs.google.com/forms/d/e/1FAIpQLScZHgBQCmItwf1iI0_FuqO4VRCmDLlfs4YEts8KbGWvlmswIQ/viewform?embedded=true", width=700, height=3800, scrolling=True)
-
-with tab6:
     st.subheader("Proteine Daily")
     userWeight = st.slider(label="Entrez votre poids avec le slide ci-dessous", min_value = 50, max_value = 100, value = 75)
     targetProteinsMin = userWeight * 1.4
