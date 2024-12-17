@@ -28,6 +28,7 @@ with tab1:
     st.subheader("Protéines et muscles")
     st.write("Pour le muscle: ça se déchire avec l'exercice. Si tu manges des protéines, ça le répare et le fait grossir. D'où les visualisations sur cette page : tu peux voir les aliments avec beaucoup de protéines pour peu de calories. J'ai aussi ajouté la dimension prix.")
     st.write("Attention, connaître la quantité de protéines ne suffit pas! Leur composition en acides aminés est importante pour leur absorbtion par le corps! Je dois me résumer et créer des vidéos avec les infos de cette vidéo:")
+    st.write("Whey idéal, vraie proteine complete, acides amines essentiels etc, mieux que prot végétale clairement, moins complete et moins interessante. Compo en acides aminés stable, et BCAA : premiers temps de l'exercice, consommés en premiers, targetés muscle growth, donc en complément des prots. Pas que mais un peu c'est oui. Mélanger prots dans lait bonne idee. Prot sert aussi à peau hormones etc Trouver la bonne whey pour pas s'empoisonner, cher c'est l'emballage, chercher la Q de prot. JAMAIS DEPASSER 2.2 à 2.4g/kg/j.")
     st.video(data="https://www.youtube.com/watch?v=0iUtJAyzOMY")
     st.markdown("[Source 1](https://www.anses.fr/fr/content/les-proteines), [Source 2](https://youtu.be/eoSrjDn7qT4?si=V2n304J_JugYx6Er&t=117)")
     st.write("Thomas - 17.11.2024")
