@@ -18,7 +18,7 @@ conn = st.connection("gsheetsAlimentsProteines", type=GSheetsConnection)
 df = conn.read()
 
 with tab1:
-    st.header("Nutrition - ma compréhension pour le moment")
+    st.header("Ma compréhension à ce stade")
     st.subheader("Calories, énergie, gras")
     st.markdown(" * La graisse, c'est de l'énergie stockée par le corps, et ça se compte en calories. 1kg de gras vaut environ 7700 calories.")
     st.markdown(" * L'énergie comprise dans ce qu'on mange est également compté en calories, comme apport. Chaque aliment apporte une certaine quantité de calories par 100g.")
@@ -26,12 +26,35 @@ with tab1:
     st.markdown("Donc, si on mange moins que la dépense totale, on dépense plus d'énergie qu'on en consomme, et le corps prend le déficit dans le gras qu'on commence à perdre. Si on mange plus que la dépense totale, le corps stock, on en prend. Et ça se voit sur 2-3 semaines à cause des processus du corps.")
     st.write("Donc pour maigrir, soit bouge, soit mange moins de calories, soit les deux. Et pour ne pas avoir faim, si manger des carbs cale sur le moment, manger des fibres et des protéines est ce qui lisse leur action dans le temps, et évite d'avoir faim à nouveau trop vite.")
     st.subheader("Protéines et muscles")
-    st.write("Pour le muscle: ça se déchire avec l'exercice. Si tu manges des protéines, ça le répare et le fait grossir. D'où les visualisations sur cette page : tu peux voir les aliments avec beaucoup de protéines pour peu de calories. J'ai aussi ajouté la dimension prix.")
-    st.write("Attention, connaître la quantité de protéines ne suffit pas! Leur composition en acides aminés est importante pour leur absorbtion par le corps! Je dois me résumer et créer des vidéos avec les infos de cette vidéo:")
-    st.write("Whey idéal, vraie proteine complete, acides amines essentiels etc, mieux que prot végétale clairement, moins complete et moins interessante. Compo en acides aminés stable, et BCAA : premiers temps de l'exercice, consommés en premiers, targetés muscle growth, donc en complément des prots. Pas que mais un peu c'est oui. Mélanger prots dans lait bonne idee. Prot sert aussi à peau hormones etc Trouver la bonne whey pour pas s'empoisonner, cher c'est l'emballage, chercher la Q de prot. JAMAIS DEPASSER 2.2 à 2.4g/kg/j.")
-    st.video(data="https://www.youtube.com/watch?v=0iUtJAyzOMY")
-    st.markdown("[Source 1](https://www.anses.fr/fr/content/les-proteines), [Source 2](https://youtu.be/eoSrjDn7qT4?si=V2n304J_JugYx6Er&t=117)")
-    st.write("Thomas - 17.11.2024")
+    st.write("Pour le muscle: ça se déchire avec l'exercice en salle. En mangeant des protéines, on lui donne de quoi se réparer et se patcher, ce qui le fait grossir. Pour une prise de muscle optimale, il faut consommer 1.7 à 2.2g de protéines par jour et poids de corps, donc pour un individu de 70kg, entre 1.7 * 70 = 119g et 2.2 * 70 = 154g. Attention à ne JAMAIS dépasser 2.2 à 2.4g/kg/j !!")
+    st.write("Les visualisations dans les onglets sur cette page permettent de voir les aliments avec beaucoup de protéines pour peu de calories. J'ai aussi ajouté la dimension prix. On peut aussi y visualiser rapidement si la quantité de protéines consommée permet d'atteindre son objectif journalier.")
+    st.write("Attention, connaître la quantité de protéines ne suffit pas ! Leur composition en acides aminés est importante pour leur absorbtion par le corps ! Voir graphiques et vidéo ci-dessous")
+
+    col1, col2 = st.columns(2)
+
+    with col1:
+        st.image(image="pages/acides-amines-web.jpg", caption="Les protéines sont composées de divers acides aminés. Les non-essentiels peuvent être recréés par notre corps en partant des autres, et les essentiels doivent être apportés par l'alimentation.")
+
+    with col2:
+        st.image("pages/BCAA-amino-acids.png", caption="Parmis les essentiels, voici leur fonction, et les 3 ciblés par les BCAA.")
+
+    st.subheader("Meilleure whey protein et autres compléments")
+    st.markdown(" * La whey normale, lactique, est plus complète et semble clairement supérieure à la whey d'origine végétale. Une bonne idée est de la mélanger au lait. Pour la source, le prix vient souvent de l'emballage. [Reddit semble très au clair](https://www.reddit.com/r/Switzerland/comments/1e2eck1/gym_people_from_which_websites_do_you_purchase/) que [Lee Sport](https://whey-protein.ch/products/bio-whey-protein) est la meilleure source suisse.")
+    st.markdown(" * Les BCAA contiennent trois acides aminés spécifiques. Le bénéfice d'en prendre semble prouvé mais très limité. Ils seraient à prendre en petite dose en complément de la whey.")
+    st.markdown(" * La créatine semble marcher et être sans danger, et avoir un effect clair, mais limité à quelques kg de muscle, mais c'est toujours ça de pris.")
+    st.markdown(" * Les stéroides sont une immense merde dangereuse et il ne faut surtout pas s'en approcher.")
+
+    col3, col4 = st.columns(2)
+    with col3:
+       with st.expander("Vidéo expliquant bien les acides aminés derrière les protéines"):
+            st.video(data="https://www.youtube.com/watch?v=0iUtJAyzOMY")
+    
+    with col4:
+        with st.expander("Vidéo source quant à mon avis whey/BCAA/créatine"):
+            st.video(data="https://youtu.be/eoSrjDn7qT4?si=V2n304J_JugYx6Er&t=117")
+
+    st.markdown("[Autre source intéressante](https://www.anses.fr/fr/content/les-proteines)")
+    st.write("Thomas - 07.01.2025")
 
 
 with tab3:
@@ -124,6 +147,8 @@ with tab2:
     )
         
     st.plotly_chart(figTwoDFour, use_container_width=True)
+
+    st.image("pages/P-NPE.png", caption="Information similaire trouvée dans une infographie sur le web")
 
 with tab5:
     st.write(df)
