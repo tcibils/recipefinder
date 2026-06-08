@@ -30,12 +30,15 @@ with tab1:
     st.write("Les visualisations dans les onglets sur cette page permettent de voir les aliments avec beaucoup de protéines pour peu de calories. J'ai aussi ajouté la dimension prix. On peut aussi y visualiser rapidement si la quantité de protéines consommée permet d'atteindre son objectif journalier.")
     st.write("Attention, connaître la quantité de protéines ne suffit pas ! Leur composition en acides aminés est importante pour leur absorbtion par le corps ! Voir graphiques et vidéo ci-dessous")
 
-    col1, col2 = st.columns(2)
+    col1, col2, col3 = st.columns(3)
 
     with col1:
-        st.image(image="pages/acides-amines-web.jpg", caption="Les protéines sont composées de divers acides aminés. Les non-essentiels peuvent être recréés par notre corps en partant des autres, et les essentiels doivent être apportés par l'alimentation.")
+        st.video(data="https://youtube.com/shorts/NueZXWMHdWc?is=4sIoBm04P_1wsjO1")
 
     with col2:
+        st.image(image="pages/acides-amines-web.jpg", caption="Les protéines sont composées de divers acides aminés. Les non-essentiels peuvent être recréés par notre corps en partant des autres, et les essentiels doivent être apportés par l'alimentation.")
+
+    with col3:
         st.image("pages/BCAA-amino-acids.png", caption="Parmis les essentiels, voici leur fonction, et les 3 ciblés par les BCAA.")
 
     st.subheader("Meilleure whey protein et autres compléments")
@@ -44,12 +47,12 @@ with tab1:
     st.markdown(" * La créatine semble marcher et être sans danger, et avoir un effect clair, mais limité à quelques kg de muscle, mais c'est toujours ça de pris.")
     st.markdown(" * Les stéroides sont une immense merde dangereuse et il ne faut surtout pas s'en approcher.")
 
-    col3, col4 = st.columns(2)
-    with col3:
+    col4, col5 = st.columns(2)
+    with col4:
        with st.expander("Vidéo expliquant bien les acides aminés derrière les protéines"):
             st.video(data="https://www.youtube.com/watch?v=0iUtJAyzOMY")
     
-    with col4:
+    with col5:
         with st.expander("Vidéo source quant à mon avis whey/BCAA/créatine"):
             st.video(data="https://youtu.be/eoSrjDn7qT4?si=V2n304J_JugYx6Er&t=117")
 
